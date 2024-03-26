@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/techChallenge3
+      SPRING_DATASOURCE_USERNAME: userAdmin
+      SPRING_DATASOURCE_PASSWORD: userAdmin
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      OPA_URL: http://opa:8181
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: techChallenge3
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
