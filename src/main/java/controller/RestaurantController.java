@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import service.RestaurantService;
 
 @RestController
-@RequestMapping("/api/restaurants")
+@RequestMapping("/restaurants")
 public class RestaurantController {
 
     @Autowired

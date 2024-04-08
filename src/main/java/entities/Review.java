@@ -1,8 +1,7 @@
 package entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +13,9 @@ import lombok.NoArgsConstructor;
 public class Review {
     @Id
     private Long id;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id")
     private Long restaurantId;
     private Long userId;
     private Double rating;

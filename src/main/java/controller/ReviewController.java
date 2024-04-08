@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import service.ReviewService;
 
 @RestController
-@RequestMapping("/api/reviews")
+@RequestMapping("/reviews")
 public class ReviewController {
 
     @Autowired

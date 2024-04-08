@@ -16,8 +16,15 @@ public class Reservation {
 
     @Id
     private Long id;
-    private Long restaurantId;
-    private Long userId;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     private LocalDate date;
     private LocalTime time;
     private Integer partySize;
