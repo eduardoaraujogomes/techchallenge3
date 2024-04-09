@@ -1,4 +1,4 @@
-package entities;
+package br.com.fiap.techChallenge3.entities;
 
 
 import jakarta.persistence.*;
@@ -14,9 +14,9 @@ public class Review {
     @Id
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
-    private Long restaurantId;
+    private Restaurant restaurant;
     private Long userId;
     private Double rating;
     private String comment;

@@ -1,6 +1,6 @@
-package repositories;
+package br.com.fiap.techChallenge3.repositories;
 
-import entities.Reservation;
+import br.com.fiap.techChallenge3.entities.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,10 +1,9 @@
-package entities;
+package br.com.fiap.techChallenge3.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.cache.annotation.EnableCaching;
 
 import java.util.List;
 
@@ -23,10 +22,10 @@ public class Restaurant {
     private String openingHours;
     private Integer capacity;
 
-    @OneToMany(mappedBy = "review", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Review> reviews;
 
-    @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Reservation> reservations;
 
 

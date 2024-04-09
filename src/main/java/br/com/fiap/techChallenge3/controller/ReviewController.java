@@ -1,9 +1,9 @@
-package controller;
-import entities.Review;
+package br.com.fiap.techChallenge3.controller;
+import br.com.fiap.techChallenge3.entities.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.ReviewService;
+import br.com.fiap.techChallenge3.service.ReviewService;
 
 @RestController
 @RequestMapping("/reviews")

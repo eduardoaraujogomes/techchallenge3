@@ -1,9 +1,9 @@
-package service;
+package br.com.fiap.techChallenge3.service;
 
-import entities.Reservation;
+import br.com.fiap.techChallenge3.entities.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.ReservationRepository;
+import br.com.fiap.techChallenge3.repositories.ReservationRepository;
 
 @Service
 public class ReservationService {

@@ -1,13 +1,13 @@
-package controller;
+package br.com.fiap.techChallenge3.controller;
 
-import entities.Restaurant;
+import br.com.fiap.techChallenge3.entities.Restaurant;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.RestaurantService;
+import br.com.fiap.techChallenge3.service.RestaurantService;
 
 @RestController
 @RequestMapping("/restaurants")
