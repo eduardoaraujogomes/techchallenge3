@@ -1,6 +1,9 @@
 package br.com.fiap.techChallenge3.controller;
 
+import br.com.fiap.techChallenge3.dto.restaurant.RestaurantRequestDTO;
+import br.com.fiap.techChallenge3.dto.restaurant.RestaurantResponseDTO;
 import br.com.fiap.techChallenge3.entities.Restaurant;
+import br.com.fiap.techChallenge3.mappers.RestaurantMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,8 +20,8 @@ public class RestaurantController {
     private RestaurantService restaurantService;
 
     @PostMapping
-    public ResponseEntity<Restaurant> createRestaurant(@RequestBody Restaurant restaurant) {
-        return ResponseEntity.ok(restaurantService.createRestaurant(restaurant));
+    public ResponseEntity<Restaurant> createRestaurant(@RequestBody RestaurantRequestDTO restaurantRequestDTO) {
+        return ResponseEntity.ok(restaurantService.createRestaurant(RestaurantMapper.toRestaurantEntity(restaurantRequestDTO)));
     }
 
     @PutMapping("/{id}")
