@@ -1,8 +1,8 @@
 package br.com.fiap.techChallenge3.mappers;
 
-import br.com.fiap.techChallenge3.dto.restaurant.RestaurantRequestDTO;
-import br.com.fiap.techChallenge3.dto.restaurant.RestaurantResponseDTO;
-import br.com.fiap.techChallenge3.entities.Restaurant;
+import br.com.fiap.techChallenge3.infraestructure.restaurant.dto.RestaurantRequestDTO;
+import br.com.fiap.techChallenge3.infraestructure.restaurant.dto.RestaurantResponseDTO;
+import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
 
 public interface RestaurantMapper {
 
