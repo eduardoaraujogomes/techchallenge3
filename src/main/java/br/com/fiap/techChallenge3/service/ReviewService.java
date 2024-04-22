@@ -1,8 +1,8 @@
 package br.com.fiap.techChallenge3.service;
-import br.com.fiap.techChallenge3.entities.Review;
+import br.com.fiap.techChallenge3.entity.review.model.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import br.com.fiap.techChallenge3.repositories.ReviewRepository;
+import br.com.fiap.techChallenge3.infraestructure.config.db.repository.ReviewRepository;
 
 @Service
 public class ReviewService {

@@ -1,9 +1,9 @@
 package br.com.fiap.techChallenge3.service;
 
-import br.com.fiap.techChallenge3.entities.Restaurant;
+import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import br.com.fiap.techChallenge3.repositories.RestaurantRepository;
+import br.com.fiap.techChallenge3.infraestructure.config.db.repository.RestaurantRepository;
 
 @Service
 public class RestaurantService {
