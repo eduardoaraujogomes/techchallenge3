@@ -1,5 +1,6 @@
 package br.com.fiap.techChallenge3.entity.reservation.model;
 
+import br.com.fiap.techChallenge3.entity.AbstractEntity;
 import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
 import br.com.fiap.techChallenge3.entity.user.model.User;
 import jakarta.persistence.*;
@@ -14,10 +15,8 @@ import java.time.LocalTime;
 @Data
 @Entity
 @NoArgsConstructor
-public class Reservation {
+public class Reservation extends AbstractEntity<Long> {
 
-    @Id
-    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")

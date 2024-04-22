@@ -2,7 +2,6 @@ package br.com.fiap.techChallenge3.infraestructure.restaurant.controller;
 
 import br.com.fiap.techChallenge3.infraestructure.restaurant.dto.RestaurantRequestDTO;
 import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
-import br.com.fiap.techChallenge3.mappers.RestaurantMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

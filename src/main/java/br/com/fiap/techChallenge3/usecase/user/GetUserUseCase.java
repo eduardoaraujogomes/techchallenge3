@@ -1,4 +1,4 @@
 package br.com.fiap.techChallenge3.usecase.user;
 
-public class a {
+public class GetUserUseCase {
 }
