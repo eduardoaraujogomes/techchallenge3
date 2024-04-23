@@ -1,29 +1,18 @@
 package br.com.fiap.techChallenge3.entity.user.model;
 
-import jakarta.persistence.*;
+import br.com.fiap.techChallenge3.entity.AbstractEntity;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
-@Table(name = "users")
-public class User {
+public abstract class User extends AbstractEntity<Long> {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false, unique = true)
     private String username;
-
-    @Column(nullable = false)
+    private String email;
     private String password;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
+    private String name;
 
 }
