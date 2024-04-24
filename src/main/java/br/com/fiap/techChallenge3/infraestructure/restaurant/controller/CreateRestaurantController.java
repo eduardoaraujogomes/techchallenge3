@@ -1,7 +1,8 @@
 package br.com.fiap.techChallenge3.infraestructure.restaurant.controller;
 
-import br.com.fiap.techChallenge3.entity.restaurant.exception.RestaurantNotFoundException;
 import br.com.fiap.techChallenge3.usecase.restaurant.CreateRestaurantUseCase;
+import br.com.fiap.techChallenge3.infraestructure.restaurant.dto.RestaurantPublicData;
+import br.com.fiap.techChallenge3.infraestructure.restaurant.dto.RestaurantRegistrationData;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,9 +18,9 @@ public class CreateRestaurantController {
         this.createRestaurantUseCase = createRestaurantUseCase;
     }
 
-    @PostMapping
+    @PostMapping("/restaurants")
     @ResponseStatus(HttpStatus.CREATED)
-    public RestaurantPublicData createRestaurant(@Valid @RequestBody RestaurantRegistrationData restaurantData){
+    public RestaurantPublicData createRestaurant(@Valid @RequestBody RestaurantRegistrationData restaurantData) {
         return new RestaurantPublicData(createRestaurantUseCase.execute(restaurantData));
     }
 }
