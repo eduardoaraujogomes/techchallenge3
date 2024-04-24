@@ -7,8 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-
 @Entity
 @Table(name = "review")
 @Data
@@ -39,6 +37,7 @@ public class ReviewSchema extends AbstractEntitySchema<Long> {
 
     public Review toReview(){
         Review review = new Review(
+                this.getId(),
                 this.getRestaurant(),
                 this.getUserId(),
                 this.getRating(),

@@ -1,8 +1,8 @@
-package br.com.fiap.techChallenge3.infraestructure.restaurant.controller;
+package br.com.fiap.techChallenge3.infraestructure.review.controller;
 
-import br.com.fiap.techChallenge3.usecase.restaurant.CreateRestaurantUseCase;
-import br.com.fiap.techChallenge3.infraestructure.restaurant.dto.RestaurantPublicData;
-import br.com.fiap.techChallenge3.infraestructure.restaurant.dto.RestaurantRegistrationData;
+import br.com.fiap.techChallenge3.infraestructure.review.dto.ReviewPublicData;
+import br.com.fiap.techChallenge3.infraestructure.review.dto.ReviewRegistrationData;
+import br.com.fiap.techChallenge3.usecase.review.CreateReviewUseCase;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class CreateRestaurantController {
-    private final CreateRestaurantUseCase createRestaurantUseCase;
+public class CreateReviewController {
+    private final CreateReviewUseCase createReviewUseCase;
 
-    public CreateRestaurantController(CreateRestaurantUseCase createRestaurantUseCase) {
-        this.createRestaurantUseCase = createRestaurantUseCase;
+    public CreateReviewController(CreateReviewUseCase createReviewUseCase) {
+        this.createReviewUseCase = createReviewUseCase;
     }
 
-    @PostMapping("/restaurants")
+    @PostMapping("/review")
     @ResponseStatus(HttpStatus.CREATED)
-    public RestaurantPublicData createRestaurant(@Valid @RequestBody RestaurantRegistrationData restaurantData) {
-        return new RestaurantPublicData(createRestaurantUseCase.execute(restaurantData));
+    public ReviewPublicData createReview(@Valid @RequestBody ReviewRegistrationData reviewData) {
+        return new ReviewPublicData(createReviewUseCase.execute(reviewData));
     }
 }

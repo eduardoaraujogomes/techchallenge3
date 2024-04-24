@@ -10,7 +10,7 @@ public interface ReviewGateway {
     Review create(Review review);
     Review update(Review review);
     void delete(Long id);
-    Optional<Review> findById (Review review);
+    Optional<Review> findById (Long id);
     List<Review> findAll();
 
 }

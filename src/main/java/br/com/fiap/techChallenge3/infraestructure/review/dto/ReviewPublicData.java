@@ -1,32 +1,22 @@
-package br.com.fiap.techChallenge3.infraestructure.restaurant.dto;
+package br.com.fiap.techChallenge3.infraestructure.review.dto;
 
-import br.com.fiap.techChallenge3.entity.reservation.model.Reservation;
 import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
 import br.com.fiap.techChallenge3.entity.review.model.Review;
-import br.com.fiap.techChallenge3.usecase.restaurant.dto.IRestaurantPublicData;
+import br.com.fiap.techChallenge3.usecase.review.dto.IReviewPublicData;
 
-import java.time.LocalTime;
-import java.util.List;
 
-public record RestaurantPublicData(
+public record ReviewPublicData(
         Long id,
-        String name,
-        String location,
-        String cuisineType,
-        LocalTime openingHours,
-        Integer capacity,
-        List<ReviewPublicData> reviews,
-        List<ReservationPublicData> reservations) implements IRestaurantPublicData {
-    public RestaurantPublicData(Restaurant restaurant){
-        this(
-                restaurant.getId(),
-                restaurant.getName(),
-                restaurant.getLocation(),
-                restaurant.getCuisineType(),
-                restaurant.getOpeningHours(),
-                restaurant.getCapacity(),
-                new List<ReviewPublicData>(restaurant.getReviews()),
-                new List<ReservationPublicData>(restaurant.getReservations())
+        Restaurant restaurant,
+        Long userId,
+        Double rating,
+        String comment) implements IReviewPublicData {
+    public ReviewPublicData(Review review){
+        this(   review.getId(),
+                review.getRestaurant(),
+                review.getUserId(),
+                review.getRating(),
+                review.getComment()
         );
     }
 }

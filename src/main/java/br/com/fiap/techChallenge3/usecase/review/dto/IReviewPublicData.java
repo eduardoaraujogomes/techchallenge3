@@ -1,16 +1,18 @@
-package br.com.fiap.techChallenge3.usecase.restaurant.dto;
+package br.com.fiap.techChallenge3.usecase.review.dto;
+
+import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
 
 import java.time.LocalTime;
 
-public interface IRestaurantPublicData {
+public interface IReviewPublicData {
     Long id();
-    String name();
-    String location();
-    String cuisineType();
-    LocalTime openingHours();
-    Integer capacity();
-    List<IReviewPublicData> reviews();
-    List<IReservationPublicData> reservations();
 
+    Restaurant restaurant();
+
+    Long userId();
+
+    Double rating();
+
+    String comment();
 
 }

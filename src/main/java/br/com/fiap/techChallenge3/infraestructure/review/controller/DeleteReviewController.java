@@ -1,8 +1,11 @@
-package br.com.fiap.techChallenge3.infraestructure.restaurant.controller;
+package br.com.fiap.techChallenge3.infraestructure.review.controller;
 
 import br.com.fiap.techChallenge3.entity.restaurant.exception.RestaurantNotFoundException;
+import br.com.fiap.techChallenge3.entity.review.exception.ReviewNotFoundException;
 import br.com.fiap.techChallenge3.infraestructure.restaurant.dto.RestaurantPublicData;
+import br.com.fiap.techChallenge3.infraestructure.review.dto.ReviewPublicData;
 import br.com.fiap.techChallenge3.usecase.restaurant.DeleteRestaurantUseCase;
+import br.com.fiap.techChallenge3.usecase.review.DeleteReviewUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,16 +13,16 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DeleteRestaurantController {
-    private final DeleteRestaurantUseCase deleteRestaurantUseCase;
+public class DeleteReviewController {
+    private final DeleteReviewUseCase deleteReviewUseCase;
 
-    public DeleteRestaurantController(DeleteRestaurantUseCase deleteRestaurantUseCase) {
-        this.deleteRestaurantUseCase = deleteRestaurantUseCase;
+    public DeleteReviewController(DeleteReviewUseCase deleteReviewUseCase) {
+        this.deleteReviewUseCase = deleteReviewUseCase;
     }
 
-    @DeleteMapping("/restaurants/{id}")
+    @DeleteMapping("/review/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public RestaurantPublicData deleteRestaurant(@PathVariable Long id) throws RestaurantNotFoundException {
-        return new RestaurantPublicData(deleteRestaurantUseCase.execute(id));
+    public ReviewPublicData deleteReview(@PathVariable Long id) throws ReviewNotFoundException {
+        return new ReviewPublicData(deleteReviewUseCase.execute(id));
     }
 }

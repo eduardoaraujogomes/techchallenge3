@@ -1,13 +1,14 @@
-package br.com.fiap.techChallenge3.usecase.restaurant.dto;
+package br.com.fiap.techChallenge3.usecase.review.dto;
 
-public interface IRestaurantRegistrationData {
-    String name();
+import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
 
-    String location();
+public interface IReviewtRegistrationData {
 
-    String cuisineType();
+    Restaurant restaurant();
 
-    String openingHours();
+    Long userId();
 
-    Integer capacity();
+    Double rating();
+
+    String comment();
 }
