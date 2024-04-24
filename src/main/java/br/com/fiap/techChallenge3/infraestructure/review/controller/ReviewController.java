@@ -1,5 +1,6 @@
 package br.com.fiap.techChallenge3.infraestructure.review.controller;
 import br.com.fiap.techChallenge3.entity.review.model.Review;
+import br.com.fiap.techChallenge3.infraestructure.review.dto.ReviewRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +14,8 @@ public class ReviewController {
     private ReviewService reviewService;
 
     @PostMapping
-    public ResponseEntity<Review> createReview(@RequestBody Review review) {
-        return ResponseEntity.ok(reviewService.createReview(review));
+    public ResponseEntity<Review> createReview(@RequestBody ReviewRequestDTO reviewRequestDTO) {
+        return ResponseEntity.ok(reviewService.createReview(ReviewMapper.toReviewEntity(reviewRequestDTO)));
     }
 
     @PutMapping("/{id}")
