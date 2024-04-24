@@ -1,10 +1,13 @@
 package br.com.fiap.techChallenge3.infraestructure.config.db.schema;
 
 import br.com.fiap.techChallenge3.entity.customer.model.Customer;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,8 +24,12 @@ public class CustomerSchema extends UserSchema {
     @NotBlank
     private String phoneNumber;
 
-    public CustomerSchema(Customer customer) {
-        super(customer.getId(), customer.getUsername(), customer.getEmail(), customer.getPassword(), customer.getName());
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "customer")
+    private List<ReservationSchema> reservations;
+
+    public CustomerSchema(final Customer customer) {
+        super(customer.getId(), customer.getUsername(), customer.getEmail(), customer.getPassword(),
+                customer.getName());
         this.cpf = customer.getCpf();
         this.phoneNumber = customer.getPhoneNumber();
     }
@@ -30,9 +37,6 @@ public class CustomerSchema extends UserSchema {
     public CustomerSchema() {
         super();
     }
-
-    //    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "customer")
-//    private List<RentalSchema> rentals;
 
     public Customer toCustomer() {
         Customer customer = new Customer(

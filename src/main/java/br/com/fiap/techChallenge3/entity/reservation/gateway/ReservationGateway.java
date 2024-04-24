@@ -10,6 +10,8 @@ public interface ReservationGateway {
     Reservation update(Reservation reservation);
     void delete(Long id);
     Optional<Reservation> findById (Long id);
-    List<Reservation> findAll();
+    List<Reservation> findAllByRestaurant(Long restaurantId);
+
+    List<Reservation> findAllByCustomer(Long customerId);
 
 }
