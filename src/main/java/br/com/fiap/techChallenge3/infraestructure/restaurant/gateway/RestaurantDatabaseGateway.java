@@ -54,4 +54,10 @@ public class RestaurantDatabaseGateway implements RestaurantGateway {
                 .map(RestaurantSchema::toRestaurant)
                 .toList();
     }
+
+    @Override
+    public Optional <Restaurant> findById(Long id) {
+        return Optional.empty();
+    }
+
 }
