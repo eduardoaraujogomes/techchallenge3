@@ -15,16 +15,20 @@ import java.time.LocalTime;
 @Data
 @Entity
 @NoArgsConstructor
-public class Reservation extends AbstractEntity<Long> {
+public class Reservation {
+    //extends AbstractEntity<Long>} {
 
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurant;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "restaurant_id")
+//    private Restaurant restaurant;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     private LocalDate date;
     private LocalTime time;
