@@ -31,23 +31,25 @@ public class UpdateReviewUseCase {
         Optional.ofNullable(valueSupplier.get())
                 .ifPresent(setter);
     }
-    private void updateLongIfPresent(Consumer<Long> setter, Supplier<String> stringValue) {
-        Optional.ofNullable(stringValue.get())
+    private void updateLongIfPresent(Consumer<Long> setter, Supplier<Long> longValue) {
+        Optional.ofNullable(longValue.get())
+                .map(String::valueOf)
                 .filter(s -> !s.isBlank())
+                .map(Long::valueOf)
                 .ifPresent(setter);
     }
 
-    private void updateDoubleIfPresent(Consumer<Double> setter, Supplier<String> stringValue) {
-        Optional.ofNullable(stringValue.get())
+    private void updateDoubleIfPresent(Consumer<Double> setter, Supplier<Double> doubleValue) {
+        Optional.ofNullable(doubleValue.get())
+                .map(String::valueOf)
                 .filter(s -> !s.isBlank())
-                .map(Integer::valueOf)
+                .map(Double::valueOf)
                 .ifPresent(setter);
     }
 
-    private void updateRestaurantIfPresent(Consumer<Restaurant> setter, Supplier<String> stringValue) {
-        Optional.ofNullable(stringValue.get())
-                .filter(s -> !s.isBlank())
-                .map(Integer::valueOf)
+    private void updateRestaurantIfPresent(Consumer<Restaurant> setter, Supplier<Restaurant> restaurantValue) {
+        Optional.ofNullable(restaurantValue.get())
                 .ifPresent(setter);
     }
+
 }

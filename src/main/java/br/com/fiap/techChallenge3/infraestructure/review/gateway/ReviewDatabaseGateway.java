@@ -31,6 +31,11 @@ public class ReviewDatabaseGateway implements ReviewGateway {
         reviewRepository.deleteById(id);
     }
 
+    @Override
+    public Optional <Review> findById(Long id) {
+        return Optional.empty();
+    }
+
 
     @Override
     public List<Review> findAll() {

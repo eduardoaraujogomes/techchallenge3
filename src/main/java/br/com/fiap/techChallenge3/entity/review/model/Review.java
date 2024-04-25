@@ -11,11 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Review extends AbstractEntity {
-//    @Id
-    private Long id;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
     private Long userId;
     private Double rating;

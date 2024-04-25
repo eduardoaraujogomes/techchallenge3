@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -22,7 +23,7 @@ public class Restaurant extends AbstractEntity {
     private String cuisineType;
     private LocalTime openingHours;
     private Integer capacity;
-    private List<Review> reviews;
+    private List <Review> reviews;
     private List<Reservation> reservations;
 
 }
