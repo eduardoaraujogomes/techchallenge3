@@ -9,8 +9,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 public class Reservation extends AbstractEntity<Long> {
@@ -24,6 +22,14 @@ public class Reservation extends AbstractEntity<Long> {
     private LocalDate date;
 
     private Status status;
+
+    public Reservation(Customer customer, LocalTime hour, LocalDate date, Status status) {
+        this.customer = customer;
+        this.hour = hour;
+        this.date = date;
+        this.status = status;
+    }
+
 
 
 }
