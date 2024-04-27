@@ -14,4 +14,6 @@ public interface ReservationGateway {
 
     List<Reservation> findAllByCustomer(Long customerId);
 
+    List<Reservation> findAll();
+
 }

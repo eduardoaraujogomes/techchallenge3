@@ -1,4 +1,4 @@
-package br.com.fiap.techChallenge3.infraestructure.user.validation.unique;
+package br.com.fiap.techChallenge3.infraestructure.validation.unique;
 
 import static java.util.Objects.nonNull;
 
@@ -10,18 +10,19 @@ import java.util.Optional;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String> {
+public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String> {
 
     private final UserRepository repository;
 
-    public UniqueEmailValidator(UserRepository repository) {
+    public UniqueUsernameValidator(final UserRepository repository) {
         this.repository = repository;
     }
 
+
     @Override
-    public boolean isValid(final String email, final ConstraintValidatorContext context) {
+    public boolean isValid(final String value, final ConstraintValidatorContext context) {
         if (nonNull(repository)) {
-            final Optional<UserSchema> user = repository.findByEmail(email);
+            final Optional<UserSchema> user = repository.findByUsername(value);
             return user.isEmpty();
         }
         return true;

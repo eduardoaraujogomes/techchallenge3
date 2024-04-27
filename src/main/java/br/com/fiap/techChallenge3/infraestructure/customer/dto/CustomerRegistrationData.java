@@ -1,11 +1,11 @@
 package br.com.fiap.techChallenge3.infraestructure.customer.dto;
 
-import br.com.fiap.techChallenge3.infraestructure.user.validation.formats.CPF;
-import br.com.fiap.techChallenge3.infraestructure.user.validation.formats.Name;
-import br.com.fiap.techChallenge3.infraestructure.user.validation.formats.PhoneNumber;
-import br.com.fiap.techChallenge3.infraestructure.user.validation.unique.UniqueCPF;
-import br.com.fiap.techChallenge3.infraestructure.user.validation.unique.UniqueEmail;
-import br.com.fiap.techChallenge3.infraestructure.user.validation.unique.UniqueUsername;
+import br.com.fiap.techChallenge3.infraestructure.validation.formats.CPF;
+import br.com.fiap.techChallenge3.infraestructure.validation.formats.Name;
+import br.com.fiap.techChallenge3.infraestructure.validation.formats.PhoneNumber;
+import br.com.fiap.techChallenge3.infraestructure.validation.unique.UniqueCPF;
+import br.com.fiap.techChallenge3.infraestructure.validation.unique.UniqueEmail;
+import br.com.fiap.techChallenge3.infraestructure.validation.unique.UniqueUsername;
 import br.com.fiap.techChallenge3.usecase.customer.dto.ICustomerRegistrationData;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

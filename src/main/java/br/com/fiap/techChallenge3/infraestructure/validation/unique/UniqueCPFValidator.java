@@ -1,4 +1,4 @@
-package br.com.fiap.techChallenge3.infraestructure.user.validation.unique;
+package br.com.fiap.techChallenge3.infraestructure.validation.unique;
 
 import static java.util.Objects.nonNull;
 

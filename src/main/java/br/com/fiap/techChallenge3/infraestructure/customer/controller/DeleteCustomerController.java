@@ -1,7 +1,6 @@
 package br.com.fiap.techChallenge3.infraestructure.customer.controller;
 
 import br.com.fiap.techChallenge3.entity.customer.exception.CustomerNotFoundException;
-import br.com.fiap.techChallenge3.infraestructure.customer.dto.CustomerPublicData;
 import br.com.fiap.techChallenge3.usecase.customer.DeleteCustomerUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,7 +20,7 @@ public class DeleteCustomerController {
 
     @DeleteMapping("/customers/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CustomerPublicData deleteCustomer(@PathVariable Long id) throws CustomerNotFoundException {
-        return new CustomerPublicData(deleteCustomerUseCase.execute(id));
+    public void deleteCustomer(@PathVariable Long id) throws CustomerNotFoundException {
+        deleteCustomerUseCase.execute(id);
     }
 }

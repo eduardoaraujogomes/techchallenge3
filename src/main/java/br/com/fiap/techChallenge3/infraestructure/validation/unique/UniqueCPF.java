@@ -1,4 +1,4 @@
-package br.com.fiap.techChallenge3.infraestructure.user.validation.unique;
+package br.com.fiap.techChallenge3.infraestructure.validation.unique;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -7,11 +7,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = UniqueUsernameValidator.class)
+@Constraint(validatedBy = UniqueCPFValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UniqueUsername {
-    String message() default "Username is already registered";
+public @interface UniqueCPF {
+    String message() default "CPF is already registered";
 
     Class<?>[] groups() default {};
 

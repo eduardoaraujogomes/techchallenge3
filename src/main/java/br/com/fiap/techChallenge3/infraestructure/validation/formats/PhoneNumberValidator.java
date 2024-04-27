@@ -1,6 +1,5 @@
-package br.com.fiap.techChallenge3.infraestructure.user.validation.formats;
+package br.com.fiap.techChallenge3.infraestructure.validation.formats;
 
-import br.com.fiap.techChallenge3.infraestructure.config.db.repository.CustomerRepository;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.stereotype.Component;

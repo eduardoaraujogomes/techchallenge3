@@ -1,4 +1,4 @@
-package br.com.fiap.techChallenge3.infraestructure.user.validation.unique;
+package br.com.fiap.techChallenge3.infraestructure.validation.formats;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -7,11 +7,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = UniqueCPFValidator.class)
+@Constraint(validatedBy = CPFValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UniqueCPF {
-    String message() default "CPF is already registered";
+public @interface CPF {
+    String message() default "Input a valid CPF.";
 
     Class<?>[] groups() default {};
 

@@ -12,13 +12,10 @@ public class DeleteCustomerUseCase {
         this.customerGateway = customerGateway;
     }
 
-    public Customer execute(final Long id) throws CustomerNotFoundException {
+    public void execute(final Long id) {
         Customer customer = customerGateway.findById(id)
                 .orElseThrow(CustomerNotFoundException::new);
 
-        customerGateway.delete(id);
-
-        return customer;
-
+        customerGateway.delete(customer.getId());
     }
 }

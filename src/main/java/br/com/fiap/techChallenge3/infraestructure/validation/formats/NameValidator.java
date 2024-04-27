@@ -1,4 +1,4 @@
-package br.com.fiap.techChallenge3.infraestructure.user.validation.formats;
+package br.com.fiap.techChallenge3.infraestructure.validation.formats;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

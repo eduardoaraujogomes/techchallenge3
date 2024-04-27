@@ -1,17 +1,14 @@
 package br.com.fiap.techChallenge3.infraestructure.config.db.schema;
 
 import br.com.fiap.techChallenge3.entity.reservation.model.Reservation;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
+import br.com.fiap.techChallenge3.entity.reservation.model.Status;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "Reservation",
@@ -38,6 +35,8 @@ public class ReservationSchema extends AbstractEntitySchema<Long> {
     @JoinColumn(name = "customer_id")
     private CustomerSchema customer;
 
+    private Status status;
+
     public ReservationSchema(Reservation reservation) {
         this.hour = reservation.getHour();
         this.date = reservation.getDate();
@@ -49,4 +48,11 @@ public class ReservationSchema extends AbstractEntitySchema<Long> {
 
     }
 
+    public Reservation toReservation() {
+        Reservation reservation = new Reservation(
+                this.customer.toCustomer(), this.hour, this.date, this.status
+        );
+        reservation.setId(this.getId());
+        return reservation;
+    }
 }

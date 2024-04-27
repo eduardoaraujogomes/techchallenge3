@@ -1,4 +1,4 @@
-package br.com.fiap.techChallenge3.infraestructure.user.validation.unique;
+package br.com.fiap.techChallenge3.infraestructure.validation.formats;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -7,11 +7,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = UniqueEmailValidator.class)
+@Constraint(validatedBy = NameValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UniqueEmail {
-    String message() default "Email is already registered";
+public @interface Name {
+    String message() default "Input a valid name.";
 
     Class<?>[] groups() default {};
 
