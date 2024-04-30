@@ -22,8 +22,8 @@ public class ReservationDatabaseGateway implements ReservationGateway {
     }
 
     @Override
-    public Reservation update(Reservation customer) {
-        return this.reservationRepository.save(new ReservationSchema(customer)).toReservation();
+    public Reservation update(Reservation reservation) {
+        return this.reservationRepository.save(new ReservationSchema(reservation)).toReservation();
     }
 
     @Override
@@ -38,14 +38,14 @@ public class ReservationDatabaseGateway implements ReservationGateway {
                 .map(ReservationSchema::toReservation);
     }
 
-    @Override
-    public List<Reservation> findAllByRestaurant(Long restaurantId) {
+//    @Override
+//    public List<Reservation> findAllByRestaurant(Long restaurantId) {
 //        return this.reservationRepository .findAllByRestaurantId(new Reservation(res))
 //                .stream()
 //                .map(ReservationSchema::toReservation)
 //                .toList();
-        return null;
-    }
+//        return null;
+//    }
 
     @Override
     public List<Reservation> findAllByCustomer(Long customerId) {

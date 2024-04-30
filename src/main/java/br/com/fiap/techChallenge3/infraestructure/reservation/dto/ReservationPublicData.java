@@ -1,6 +1,7 @@
 package br.com.fiap.techChallenge3.infraestructure.reservation.dto;
 
 import br.com.fiap.techChallenge3.entity.reservation.model.Reservation;
+import br.com.fiap.techChallenge3.entity.reservation.model.Status;
 import br.com.fiap.techChallenge3.infraestructure.customer.dto.CustomerPublicData;
 import br.com.fiap.techChallenge3.usecase.reservation.dto.IReservationPublicData;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -19,7 +20,9 @@ public record ReservationPublicData(
 
 //    RestaurantPublicData restaurant,
 
-        CustomerPublicData customer
+        CustomerPublicData customer,
+
+        Status status
 
 ) implements IReservationPublicData {
     public ReservationPublicData(Reservation reservation) {
@@ -28,7 +31,8 @@ public record ReservationPublicData(
                 reservation.getHour(),
                 reservation.getDate(),
 //                        new RestaurantPublicData(reservation.getRestaurant()),
-                new CustomerPublicData(reservation.getCustomer())
+                new CustomerPublicData(reservation.getCustomer()),
+                reservation.getStatus()
         );
     }
 }

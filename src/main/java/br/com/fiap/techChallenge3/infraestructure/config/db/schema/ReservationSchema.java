@@ -12,13 +12,13 @@ import java.time.LocalTime;
 
 @Entity
 @Table(name = "Reservation",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"hour", "date", "customer_id"})
+        uniqueConstraints = @UniqueConstraint(columnNames = {"\"hour\"", "date", "customer_id"})
 )
 @Getter
 @Setter
 public class ReservationSchema extends AbstractEntitySchema<Long> {
     @NotNull
-    @Column(nullable = false, columnDefinition = "Time", name = "hour")
+    @Column(nullable = false, columnDefinition = "Time", name = "\"hour\"")
     private LocalTime hour;
 
     @NotNull
@@ -35,6 +35,7 @@ public class ReservationSchema extends AbstractEntitySchema<Long> {
     @JoinColumn(name = "customer_id")
     private CustomerSchema customer;
 
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     public ReservationSchema(Reservation reservation) {
@@ -42,6 +43,7 @@ public class ReservationSchema extends AbstractEntitySchema<Long> {
         this.date = reservation.getDate();
 //        this.restaurant = new Restaurant(reservation.getRestaurant());
         this.customer = new CustomerSchema(reservation.getCustomer());
+        this.status = reservation.getStatus();
     }
 
     public ReservationSchema() {

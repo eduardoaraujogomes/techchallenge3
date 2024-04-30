@@ -1,15 +1,12 @@
 package br.com.fiap.techChallenge3.infraestructure.config.db.schema;
 
 import br.com.fiap.techChallenge3.entity.customer.model.Customer;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Customer")
@@ -28,8 +25,7 @@ public class CustomerSchema extends UserSchema {
     private List<ReservationSchema> reservations;
 
     public CustomerSchema(final Customer customer) {
-        super(customer.getId(), customer.getUsername(), customer.getEmail(), customer.getPassword(),
-                customer.getName());
+        super(customer.getId(), customer.getUsername(), customer.getName(), customer.getEmail(), customer.getPassword());
         this.cpf = customer.getCpf();
         this.phoneNumber = customer.getPhoneNumber();
     }
