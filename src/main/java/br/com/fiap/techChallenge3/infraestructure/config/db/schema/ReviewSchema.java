@@ -13,18 +13,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReviewSchema extends AbstractEntitySchema<Long> {
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @NotNull
+    @ManyToOne
     @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurant;
+    private RestaurantSchema restaurant;
+
     @NotNull
     private Long userId;
+
     @NotNull
     private Double rating;
+
     @NotNull
     private String comment;
 
     public ReviewSchema(Review review){
-        this.restaurant = review.getRestaurant();
+        this.restaurant = new RestaurantSchema(review.getRestaurant());
         this.userId = review.getUserId();
         this.rating = review.getRating();
         this.comment = review.getComment();
@@ -33,7 +37,7 @@ public class ReviewSchema extends AbstractEntitySchema<Long> {
 
     public Review toReview(){
         Review review = new Review(
-                this.getRestaurant(),
+                this.restaurant.toRestaurant(),
                 this.getUserId(),
                 this.getRating(),
                 this.getComment()
