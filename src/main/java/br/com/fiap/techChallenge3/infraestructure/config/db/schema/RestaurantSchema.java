@@ -1,4 +1,5 @@
 package br.com.fiap.techChallenge3.infraestructure.config.db.schema;
+
 import br.com.fiap.techChallenge3.entity.reservation.model.Reservation;
 import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
 import br.com.fiap.techChallenge3.entity.review.model.Review;
@@ -13,29 +14,35 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
-@Table(name = "restaurant")
+@Table(name = "Restaurant", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"name"})})
 @Data
 @NoArgsConstructor
 public class RestaurantSchema extends AbstractEntitySchema<Long> {
 
     @NotNull
     private String name;
+
     @NotNull
     private String location;
+
     @NotNull
     private String cuisine;
+
     @NotNull
     private LocalTime openingHours;
+
     @NotNull
     private Integer capacity;
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<ReviewSchema> reviews;
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<ReservationSchema> reservations;
 
     public RestaurantSchema(Restaurant restaurant){
+        this.setId(restaurant.getId());
         this.name = restaurant.getName();
         this.location = restaurant.getLocation();
         this.cuisine = restaurant.getCuisineType();

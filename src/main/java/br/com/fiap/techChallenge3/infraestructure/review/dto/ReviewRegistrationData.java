@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record ReviewRegistrationData(
         @NotNull
-        Restaurant restaurant,
+        Long restaurantId,
         @NotNull
         Long userId,
         @NotNull

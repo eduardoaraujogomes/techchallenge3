@@ -57,9 +57,10 @@ public class MvcConfig {
     }
 
     @Bean
-    public CreateReviewUseCase createReviewUseCase(ReviewRepository reviewRepository){
-        ReviewGateway revewGateway = new ReviewDatabaseGateway(reviewRepository);
-        return new CreateReviewUseCase(revewGateway);
+    public CreateReviewUseCase createReviewUseCase(ReviewRepository reviewRepository, RestaurantRepository restaurantRepository){
+        ReviewGateway reviewGateway = new ReviewDatabaseGateway(reviewRepository);
+        RestaurantGateway restaurantGateway = new RestaurantDatabaseGateway(restaurantRepository);
+        return new CreateReviewUseCase(reviewGateway, restaurantGateway);
     }
 
     @Bean

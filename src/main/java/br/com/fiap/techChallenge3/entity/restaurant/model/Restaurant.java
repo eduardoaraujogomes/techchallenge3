@@ -16,7 +16,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Restaurant extends AbstractEntity {
+public class Restaurant extends AbstractEntity<Long>  {
 
     private String name;
     private String location;

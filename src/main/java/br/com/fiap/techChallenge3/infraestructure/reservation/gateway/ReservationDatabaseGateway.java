@@ -4,6 +4,7 @@ import br.com.fiap.techChallenge3.entity.reservation.gateway.ReservationGateway;
 import br.com.fiap.techChallenge3.entity.reservation.model.Reservation;
 import br.com.fiap.techChallenge3.infraestructure.config.db.repository.ReservationRepository;
 import br.com.fiap.techChallenge3.infraestructure.config.db.schema.ReservationSchema;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,7 @@ public class ReservationDatabaseGateway implements ReservationGateway {
     }
 
     @Override
+    @Transactional
     public Reservation create(Reservation reservation) {
         return this.reservationRepository.save(new ReservationSchema(reservation)).toReservation();
     }

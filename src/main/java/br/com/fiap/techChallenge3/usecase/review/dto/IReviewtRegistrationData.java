@@ -4,7 +4,7 @@ import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
 
 public interface IReviewtRegistrationData {
 
-    Restaurant restaurant();
+    Long restaurantId();
 
     Long userId();
 

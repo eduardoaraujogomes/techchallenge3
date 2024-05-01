@@ -18,7 +18,7 @@ public class CreateReviewController {
         this.createReviewUseCase = createReviewUseCase;
     }
 
-    @PostMapping("/review")
+    @PostMapping("/reviews")
     @ResponseStatus(HttpStatus.CREATED)
     public ReviewPublicData createReview(@Valid @RequestBody ReviewRegistrationData reviewData) {
         return new ReviewPublicData(createReviewUseCase.execute(reviewData));

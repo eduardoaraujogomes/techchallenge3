@@ -14,6 +14,5 @@ public interface RestaurantGateway {
     List<Restaurant> findByCuisine (String restaurant);
     List<Restaurant> findByLocation (String restaurant);
     List<Restaurant> findAll();
-
     Optional<Restaurant> findById(Long id);
 }

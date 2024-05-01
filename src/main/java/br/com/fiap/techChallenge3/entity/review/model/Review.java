@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Review extends AbstractEntity {
+public class Review extends AbstractEntity<Long> {
 
     private Restaurant restaurant;
     private Long userId;

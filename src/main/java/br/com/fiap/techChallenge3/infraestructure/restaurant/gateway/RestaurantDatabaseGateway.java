@@ -3,6 +3,7 @@ package br.com.fiap.techChallenge3.infraestructure.restaurant.gateway;
 import br.com.fiap.techChallenge3.entity.restaurant.gateway.RestaurantGateway;
 import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
 import br.com.fiap.techChallenge3.infraestructure.config.db.repository.RestaurantRepository;
+import br.com.fiap.techChallenge3.infraestructure.config.db.schema.CustomerSchema;
 import br.com.fiap.techChallenge3.infraestructure.config.db.schema.RestaurantSchema;
 
 import java.util.List;
@@ -57,7 +58,9 @@ public class RestaurantDatabaseGateway implements RestaurantGateway {
 
     @Override
     public Optional <Restaurant> findById(Long id) {
-        return Optional.empty();
+        return restaurantRepository
+                .findById(id)
+                .map(RestaurantSchema::toRestaurant);
     }
 
 }
