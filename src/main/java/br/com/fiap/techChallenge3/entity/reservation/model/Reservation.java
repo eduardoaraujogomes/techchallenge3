@@ -1,36 +1,35 @@
 package br.com.fiap.techChallenge3.entity.reservation.model;
 
 import br.com.fiap.techChallenge3.entity.AbstractEntity;
-import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
-import br.com.fiap.techChallenge3.entity.user.model.User;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import br.com.fiap.techChallenge3.entity.customer.model.Customer;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@AllArgsConstructor
-@Data
-@Entity
-@NoArgsConstructor
+@Getter
+@Setter
 public class Reservation extends AbstractEntity<Long> {
 
+//    private Restaurant restaurant;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurant;
+    private Customer customer;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    private LocalTime hour;
 
     private LocalDate date;
-    private LocalTime time;
-    private Integer partySize;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Status status;
+
+    public Reservation(Customer customer, LocalTime hour, LocalDate date, Status status) {
+        this.customer = customer;
+        this.hour = hour;
+        this.date = date;
+        this.status = status;
+    }
+
+
+
 }
