@@ -35,6 +35,7 @@ public class ReservationSchema extends AbstractEntitySchema<Long> {
     @JoinColumn(name = "customer_id")
     private CustomerSchema customer;
 
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     public ReservationSchema(Reservation reservation) {
@@ -42,6 +43,7 @@ public class ReservationSchema extends AbstractEntitySchema<Long> {
         this.date = reservation.getDate();
         this.restaurant = new RestaurantSchema(reservation.getRestaurant());
         this.customer = new CustomerSchema(reservation.getCustomer());
+        this.status = reservation.getStatus();
     }
 
     public ReservationSchema() {

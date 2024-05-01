@@ -23,7 +23,7 @@ public class UpdateCustomerController {
 
     @PutMapping("/customers/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CustomerPublicData createCustomer(@PathVariable Long id, @Valid @RequestBody CostumerUpdateData request)
+    public CustomerPublicData updateCustomer(@PathVariable Long id, @Valid @RequestBody CostumerUpdateData request)
             throws CustomerNotFoundException {
         return new CustomerPublicData(updateCustomerUseCase.execute(id, request));
     }
