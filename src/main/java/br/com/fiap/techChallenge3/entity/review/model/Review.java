@@ -2,18 +2,27 @@ package br.com.fiap.techChallenge3.entity.review.model;
 
 
 import br.com.fiap.techChallenge3.entity.AbstractEntity;
+import br.com.fiap.techChallenge3.entity.customer.model.Customer;
 import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 public class Review extends AbstractEntity<Long> {
 
     private Restaurant restaurant;
-    private Long userId;
+
+    private Customer customer;
+
     private Double rating;
+
     private String comment;
+
+    public Review(Restaurant restaurant, Customer customer, Double rating, String comment) {
+        this.restaurant = restaurant;
+        this.customer = customer;
+        this.rating = rating;
+        this.comment = comment;
+    }
 }

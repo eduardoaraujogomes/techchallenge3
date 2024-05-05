@@ -1,29 +1,38 @@
 package br.com.fiap.techChallenge3.entity.restaurant.model;
 
 import br.com.fiap.techChallenge3.entity.AbstractEntity;
-import br.com.fiap.techChallenge3.entity.review.model.Review;
 import br.com.fiap.techChallenge3.entity.reservation.model.Reservation;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
+import br.com.fiap.techChallenge3.entity.review.model.Review;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Restaurant extends AbstractEntity<Long>  {
+@Getter
+@Setter
+public class Restaurant extends AbstractEntity<Long> {
 
     private String name;
+
     private String location;
-    private String cuisineType;
+
+    private String cuisine;
+
     private LocalTime openingHours;
+
     private Integer capacity;
-    private List <Review> reviews;
-    private List<Reservation> reservations;
+
+    private List<Review> reviews = new ArrayList<>();
+
+    private List<Reservation> reservations = new ArrayList<>();
+
+    public Restaurant(String name, String location, String cuisine, LocalTime openingHours, Integer capacity) {
+        this.name = name;
+        this.location = location;
+        this.cuisine = cuisine;
+        this.openingHours = openingHours;
+        this.capacity = capacity;
+    }
 
 }

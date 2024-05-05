@@ -2,24 +2,36 @@ package br.com.fiap.techChallenge3.infraestructure.config.web;
 
 import br.com.fiap.techChallenge3.entity.customer.gateway.CustomerGateway;
 import br.com.fiap.techChallenge3.entity.reservation.gateway.ReservationGateway;
-import br.com.fiap.techChallenge3.infraestructure.config.db.repository.CustomerRepository;
-import br.com.fiap.techChallenge3.infraestructure.config.db.repository.ReservationRepository;
-import br.com.fiap.techChallenge3.infraestructure.customer.gateway.CustomerDatabaseGateway;
-import br.com.fiap.techChallenge3.infraestructure.reservation.gateway.ReservationDatabaseGateway;
-import br.com.fiap.techChallenge3.usecase.customer.*;
-import br.com.fiap.techChallenge3.usecase.reservation.*;
 import br.com.fiap.techChallenge3.entity.restaurant.gateway.RestaurantGateway;
 import br.com.fiap.techChallenge3.entity.review.gateway.ReviewGateway;
+import br.com.fiap.techChallenge3.infraestructure.config.db.repository.CustomerRepository;
+import br.com.fiap.techChallenge3.infraestructure.config.db.repository.ReservationRepository;
 import br.com.fiap.techChallenge3.infraestructure.config.db.repository.RestaurantRepository;
 import br.com.fiap.techChallenge3.infraestructure.config.db.repository.ReviewRepository;
+import br.com.fiap.techChallenge3.infraestructure.customer.gateway.CustomerDatabaseGateway;
+import br.com.fiap.techChallenge3.infraestructure.reservation.gateway.ReservationDatabaseGateway;
 import br.com.fiap.techChallenge3.infraestructure.restaurant.gateway.RestaurantDatabaseGateway;
 import br.com.fiap.techChallenge3.infraestructure.review.gateway.ReviewDatabaseGateway;
+import br.com.fiap.techChallenge3.usecase.customer.CreateCustomerUseCase;
+import br.com.fiap.techChallenge3.usecase.customer.DeleteCustomerUseCase;
+import br.com.fiap.techChallenge3.usecase.customer.GetCustomerUseCase;
+import br.com.fiap.techChallenge3.usecase.customer.SearchCustomerUseCase;
+import br.com.fiap.techChallenge3.usecase.customer.UpdateCustomerUseCase;
+import br.com.fiap.techChallenge3.usecase.reservation.CreateReservationUseCase;
+import br.com.fiap.techChallenge3.usecase.reservation.DeleteReservationUseCase;
+import br.com.fiap.techChallenge3.usecase.reservation.GetReservationUseCase;
+import br.com.fiap.techChallenge3.usecase.reservation.SearchReservationUseCase;
+import br.com.fiap.techChallenge3.usecase.reservation.UpdateReservationUseCase;
 import br.com.fiap.techChallenge3.usecase.restaurant.CreateRestaurantUseCase;
 import br.com.fiap.techChallenge3.usecase.restaurant.DeleteRestaurantUseCase;
 import br.com.fiap.techChallenge3.usecase.restaurant.GetRestaurantUseCase;
 import br.com.fiap.techChallenge3.usecase.restaurant.SearchRestaurantUseCase;
 import br.com.fiap.techChallenge3.usecase.restaurant.UpdateRestaurantUseCase;
-import br.com.fiap.techChallenge3.usecase.review.*;
+import br.com.fiap.techChallenge3.usecase.review.CreateReviewUseCase;
+import br.com.fiap.techChallenge3.usecase.review.DeleteReviewUseCase;
+import br.com.fiap.techChallenge3.usecase.review.GetReviewUseCase;
+import br.com.fiap.techChallenge3.usecase.review.SearchReviewUseCase;
+import br.com.fiap.techChallenge3.usecase.review.UpdateReviewUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,56 +39,59 @@ import org.springframework.context.annotation.Configuration;
 public class MvcConfig {
 
     @Bean
-    public CreateRestaurantUseCase createRestaurantUseCase(RestaurantRepository restaurantRepository){
+    public CreateRestaurantUseCase createRestaurantUseCase(RestaurantRepository restaurantRepository) {
         RestaurantGateway restaurantGateway = new RestaurantDatabaseGateway(restaurantRepository);
         return new CreateRestaurantUseCase(restaurantGateway);
     }
 
     @Bean
-    public DeleteRestaurantUseCase deleteRestaurantUseCase(RestaurantRepository restaurantRepository){
+    public DeleteRestaurantUseCase deleteRestaurantUseCase(RestaurantRepository restaurantRepository) {
         RestaurantGateway restaurantGateway = new RestaurantDatabaseGateway(restaurantRepository);
         return new DeleteRestaurantUseCase(restaurantGateway);
     }
 
     @Bean
-    public GetRestaurantUseCase getRestaurantUseCase(RestaurantRepository restaurantRepository){
+    public GetRestaurantUseCase getRestaurantUseCase(RestaurantRepository restaurantRepository) {
         RestaurantGateway restaurantGateway = new RestaurantDatabaseGateway(restaurantRepository);
         return new GetRestaurantUseCase(restaurantGateway);
     }
 
     @Bean
-    public SearchRestaurantUseCase searchRestaurantUseCase(RestaurantRepository restaurantRepository){
+    public SearchRestaurantUseCase searchRestaurantUseCase(RestaurantRepository restaurantRepository) {
         RestaurantGateway restaurantGateway = new RestaurantDatabaseGateway(restaurantRepository);
         return new SearchRestaurantUseCase(restaurantGateway);
     }
 
     @Bean
-    public UpdateRestaurantUseCase updateRestaurantUseCase(RestaurantRepository restaurantRepository){
+    public UpdateRestaurantUseCase updateRestaurantUseCase(RestaurantRepository restaurantRepository) {
         RestaurantGateway restaurantGateway = new RestaurantDatabaseGateway(restaurantRepository);
         return new UpdateRestaurantUseCase(restaurantGateway);
     }
 
     @Bean
-    public CreateReviewUseCase createReviewUseCase(ReviewRepository reviewRepository, RestaurantRepository restaurantRepository){
+    public CreateReviewUseCase createReviewUseCase(ReviewRepository reviewRepository,
+                                                   RestaurantRepository restaurantRepository,
+                                                   CustomerRepository customerRepository) {
         ReviewGateway reviewGateway = new ReviewDatabaseGateway(reviewRepository);
         RestaurantGateway restaurantGateway = new RestaurantDatabaseGateway(restaurantRepository);
-        return new CreateReviewUseCase(reviewGateway, restaurantGateway);
+        CustomerGateway customerGateway = new CustomerDatabaseGateway(customerRepository);
+        return new CreateReviewUseCase(reviewGateway, restaurantGateway, customerGateway);
     }
 
     @Bean
-    public DeleteReviewUseCase deleteRevewUseCase(ReviewRepository reviewRepository){
+    public DeleteReviewUseCase deleteRevewUseCase(ReviewRepository reviewRepository) {
         ReviewGateway reviewGateway = new ReviewDatabaseGateway(reviewRepository);
         return new DeleteReviewUseCase(reviewGateway);
     }
 
     @Bean
-    public GetReviewUseCase getReviewUseCase(ReviewRepository reviewRepository){
+    public GetReviewUseCase getReviewUseCase(ReviewRepository reviewRepository) {
         ReviewGateway reviewGateway = new ReviewDatabaseGateway(reviewRepository);
         return new GetReviewUseCase(reviewGateway);
     }
 
     @Bean
-    public SearchReviewUseCase searchReviewtUseCase(ReviewRepository reviewRepository){
+    public SearchReviewUseCase searchReviewtUseCase(ReviewRepository reviewRepository) {
         ReviewGateway reviewGateway = new ReviewDatabaseGateway(reviewRepository);
         return new SearchReviewUseCase(reviewGateway);
     }
@@ -86,6 +101,7 @@ public class MvcConfig {
         ReviewGateway reviewGateway = new ReviewDatabaseGateway(reviewRepository);
         return new UpdateReviewUseCase(reviewGateway);
     }
+
     @Bean
     public CreateCustomerUseCase createCustomerUseCase(CustomerRepository customerRepository) {
         CustomerGateway customerGateway = new CustomerDatabaseGateway(customerRepository);
@@ -117,7 +133,9 @@ public class MvcConfig {
     }
 
     @Bean
-    public CreateReservationUseCase createReservationUseCase(ReservationRepository reservationRepository, CustomerRepository customerRepository, RestaurantRepository restaurantRepository) {
+    public CreateReservationUseCase createReservationUseCase(ReservationRepository reservationRepository,
+                                                             CustomerRepository customerRepository,
+                                                             RestaurantRepository restaurantRepository) {
         ReservationGateway reservationGateway = new ReservationDatabaseGateway(reservationRepository);
         CustomerGateway customerGateway = new CustomerDatabaseGateway(customerRepository);
         RestaurantGateway restaurantGateway = new RestaurantDatabaseGateway(restaurantRepository);

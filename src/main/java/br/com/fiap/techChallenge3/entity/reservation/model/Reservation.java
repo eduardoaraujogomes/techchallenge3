@@ -2,13 +2,10 @@ package br.com.fiap.techChallenge3.entity.reservation.model;
 
 import br.com.fiap.techChallenge3.entity.AbstractEntity;
 import br.com.fiap.techChallenge3.entity.customer.model.Customer;
+import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
-import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -32,7 +29,6 @@ public class Reservation extends AbstractEntity<Long> {
         this.status = status;
         this.restaurant = restaurant;
     }
-
 
 
 }

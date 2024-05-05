@@ -1,10 +1,12 @@
 package br.com.fiap.techChallenge3.infraestructure.customer.dto;
 
 import br.com.fiap.techChallenge3.entity.customer.model.Customer;
+import br.com.fiap.techChallenge3.infraestructure.reservation.dto.ReservationPublicData;
 import br.com.fiap.techChallenge3.usecase.customer.dto.ICustomerPublicData;
+import java.util.List;
 
 public record CustomerPublicData(
-        String id,
+        Long id,
 
         String username,
 
@@ -16,7 +18,7 @@ public record CustomerPublicData(
 ) implements ICustomerPublicData {
     public CustomerPublicData(Customer customer) {
         this(
-                customer.getId().toString(),
+                customer.getId(),
                 customer.getUsername(),
                 customer.getName(),
                 customer.getEmail(),

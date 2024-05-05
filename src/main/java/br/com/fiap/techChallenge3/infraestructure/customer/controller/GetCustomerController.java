@@ -2,7 +2,7 @@ package br.com.fiap.techChallenge3.infraestructure.customer.controller;
 
 import br.com.fiap.techChallenge3.entity.customer.exception.CustomerNotFoundException;
 import br.com.fiap.techChallenge3.entity.customer.model.Customer;
-import br.com.fiap.techChallenge3.infraestructure.customer.dto.CustomerPublicData;
+import br.com.fiap.techChallenge3.infraestructure.customer.dto.CustomerFullData;
 import br.com.fiap.techChallenge3.usecase.customer.GetCustomerUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +21,10 @@ public class GetCustomerController {
 
     @GetMapping("/customers/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public CustomerPublicData getCustomer(@PathVariable Long id) throws CustomerNotFoundException {
+    public CustomerFullData getCustomer(@PathVariable Long id) throws CustomerNotFoundException {
         Customer customer = getCustomerUseCase.execute(id);
 
-        return new CustomerPublicData(customer);
+        return new CustomerFullData(customer);
     }
 
 }

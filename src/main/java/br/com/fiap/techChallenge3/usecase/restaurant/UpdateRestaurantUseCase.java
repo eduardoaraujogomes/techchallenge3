@@ -22,7 +22,7 @@ public class UpdateRestaurantUseCase {
         Restaurant restaurant = restaurantGateway.findById(id).orElseThrow(RestaurantNotFoundException::new);
         updatePropertyIfPresent(restaurant::setName, updateData::name);
         updatePropertyIfPresent(restaurant::setLocation, updateData::location);
-        updatePropertyIfPresent(restaurant::setCuisineType, updateData::cuisineType);
+        updatePropertyIfPresent(restaurant::setCuisine, updateData::cuisineType);
         updateLocalTimeIfPresent(restaurant::setOpeningHours, updateData::openingHours);
         updateIntegerIfPresent(restaurant::setCapacity, updateData::capacity);
         return restaurant;

@@ -38,7 +38,7 @@ public class CustomerDatabaseGateway implements CustomerGateway {
     public Optional<Customer> findById(Long id) {
         return customerRepository
                 .findById(id)
-                .map(CustomerSchema::toCustomer);
+                .map(CustomerSchema::toCustomerWithFullInformation);
     }
 
     @Override

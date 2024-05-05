@@ -4,7 +4,6 @@ import br.com.fiap.techChallenge3.entity.review.gateway.ReviewGateway;
 import br.com.fiap.techChallenge3.entity.review.model.Review;
 import br.com.fiap.techChallenge3.infraestructure.config.db.repository.ReviewRepository;
 import br.com.fiap.techChallenge3.infraestructure.config.db.schema.ReviewSchema;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -32,8 +31,10 @@ public class ReviewDatabaseGateway implements ReviewGateway {
     }
 
     @Override
-    public Optional <Review> findById(Long id) {
-        return Optional.empty();
+    public Optional<Review> findById(Long id) {
+        return reviewRepository
+                .findById(id)
+                .map(ReviewSchema::toReview);
     }
 
 

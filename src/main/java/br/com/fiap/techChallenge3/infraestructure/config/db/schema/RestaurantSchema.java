@@ -1,17 +1,18 @@
 package br.com.fiap.techChallenge3.infraestructure.config.db.schema;
 
-import br.com.fiap.techChallenge3.entity.reservation.model.Reservation;
 import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
-import br.com.fiap.techChallenge3.entity.review.model.Review;
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotNull;
+import java.time.LocalTime;
+import java.util.List;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "Restaurant", uniqueConstraints = {
@@ -36,30 +37,28 @@ public class RestaurantSchema extends AbstractEntitySchema<Long> {
     private Integer capacity;
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<ReviewSchema> reviews;
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<ReservationSchema> reservations;
 
-    public RestaurantSchema(Restaurant restaurant){
+    public RestaurantSchema(Restaurant restaurant) {
         this.setId(restaurant.getId());
         this.name = restaurant.getName();
         this.location = restaurant.getLocation();
-        this.cuisine = restaurant.getCuisineType();
+        this.cuisine = restaurant.getCuisine();
         this.openingHours = restaurant.getOpeningHours();
         this.capacity = restaurant.getCapacity();
-        this.reviews = new ArrayList<>();
-        this.reservations = new ArrayList<>();
     }
 
-    public Restaurant toRestaurant(){
+    public Restaurant toRestaurant() {
         Restaurant restaurant = new Restaurant(this.getName(),
                 this.getLocation(),
                 this.getCuisine(),
                 this.getOpeningHours(),
-                this.getCapacity(),
-                this.reviews.stream().map(ReviewSchema::toReview).collect(Collectors.toList()),
-                this.reservations.stream().map(ReservationSchema::toReservation).collect(Collectors.toList()));
+                this.getCapacity());
         restaurant.setId(this.getId());
         return restaurant;
     }

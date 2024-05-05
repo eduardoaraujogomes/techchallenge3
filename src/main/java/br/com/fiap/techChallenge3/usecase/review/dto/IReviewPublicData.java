@@ -1,15 +1,14 @@
 package br.com.fiap.techChallenge3.usecase.review.dto;
 
-import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
-
-import java.time.LocalTime;
+import br.com.fiap.techChallenge3.infraestructure.customer.dto.CustomerPublicData;
+import br.com.fiap.techChallenge3.infraestructure.restaurant.dto.RestaurantPublicData;
 
 public interface IReviewPublicData {
     Long id();
 
-    Restaurant restaurant();
+    RestaurantPublicData restaurant();
 
-    Long userId();
+    CustomerPublicData customer();
 
     Double rating();
 

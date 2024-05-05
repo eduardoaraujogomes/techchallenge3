@@ -2,14 +2,21 @@ package br.com.fiap.techChallenge3.infraestructure.config.db.schema;
 
 import br.com.fiap.techChallenge3.entity.reservation.model.Reservation;
 import br.com.fiap.techChallenge3.entity.reservation.model.Status;
-import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 @Entity
 @Table(name = "Reservation",
         uniqueConstraints = @UniqueConstraint(columnNames = {"\"hour\"", "date", "customer_id"})
@@ -28,6 +35,7 @@ public class ReservationSchema extends AbstractEntitySchema<Long> {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
+    @JsonBackReference
     private RestaurantSchema restaurant;
 
     @NotNull
