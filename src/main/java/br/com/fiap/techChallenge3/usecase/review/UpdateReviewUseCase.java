@@ -20,7 +20,7 @@ public class UpdateReviewUseCase {
         updateReviewIfNotBlank(updateData.rating(), review::setRating);
         updateReviewIfNotBlank(updateData.comment(), review::setComment);
 
-        return review;
+        return reviewGateway.update(review);
     }
 
     private <T> void updateReviewIfNotBlank(T value, Consumer<T> setter) {

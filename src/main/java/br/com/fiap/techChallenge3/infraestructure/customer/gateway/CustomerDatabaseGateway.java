@@ -31,7 +31,7 @@ public class CustomerDatabaseGateway implements CustomerGateway {
 
     @Override
     public void delete(Long id) {
-
+        this.customerRepository.deleteById(id);
     }
 
     @Override
@@ -48,6 +48,6 @@ public class CustomerDatabaseGateway implements CustomerGateway {
 
     @Override
     public List<Customer> findAll() {
-        return null;
+        return customerRepository.findAll().stream().map(CustomerSchema::toCustomer).toList();
     }
 }

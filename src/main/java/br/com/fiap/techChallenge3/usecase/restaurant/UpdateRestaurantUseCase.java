@@ -25,7 +25,8 @@ public class UpdateRestaurantUseCase {
         updatePropertyIfPresent(restaurant::setCuisine, updateData::cuisineType);
         updateLocalTimeIfPresent(restaurant::setOpeningHours, updateData::openingHours);
         updateIntegerIfPresent(restaurant::setCapacity, updateData::capacity);
-        return restaurant;
+
+        return this.restaurantGateway.update(restaurant);
     }
 
     private void updatePropertyIfPresent(Consumer<String> setter, Supplier<String> valueSupplier) {

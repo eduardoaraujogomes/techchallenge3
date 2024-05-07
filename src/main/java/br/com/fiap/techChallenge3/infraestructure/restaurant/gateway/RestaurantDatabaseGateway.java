@@ -24,7 +24,7 @@ public class RestaurantDatabaseGateway implements RestaurantGateway {
 
     @Override
     public Restaurant update(Restaurant restaurant) {
-        return null;
+        return restaurantRepository.save(new RestaurantSchema(restaurant)).toRestaurant();
     }
 
     @Override

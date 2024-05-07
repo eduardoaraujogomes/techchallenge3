@@ -22,7 +22,7 @@ public class ReviewDatabaseGateway implements ReviewGateway {
 
     @Override
     public Review update(Review review) {
-        return null;
+        return reviewRepository.save(new ReviewSchema(review)).toReview();
     }
 
     @Override
