@@ -2,7 +2,7 @@ package br.com.fiap.techChallenge3.infraestructure.restaurant.controller;
 
 import br.com.fiap.techChallenge3.entity.restaurant.exception.RestaurantNotFoundException;
 import br.com.fiap.techChallenge3.infraestructure.restaurant.dto.RestaurantPublicData;
-import br.com.fiap.techChallenge3.usecase.restaurant.GetRestaurantUseCase;
+import br.com.fiap.techChallenge3.usecase.restaurant.GetRestaurantByNameUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class GetRestaurantController {
-    private final GetRestaurantUseCase getRestaurantUseCase;
+public class GetRestaurantByNameController {
+    private final GetRestaurantByNameUseCase getRestaurantByNameUseCase;
 
-    public GetRestaurantController(GetRestaurantUseCase getRestaurantUseCase) {
-        this.getRestaurantUseCase = getRestaurantUseCase;
+    public GetRestaurantByNameController(GetRestaurantByNameUseCase getRestaurantByNameUseCase) {
+        this.getRestaurantByNameUseCase = getRestaurantByNameUseCase;
     }
 
-    @GetMapping("/restaurants/{id}")
+    @GetMapping("/restaurants/name/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public RestaurantPublicData getRestaurant(@PathVariable Long id) throws RestaurantNotFoundException {
-        return new RestaurantPublicData(getRestaurantUseCase.execute(id));
+    public RestaurantPublicData getRestaurantByName(@PathVariable String name) throws RestaurantNotFoundException {
+        return new RestaurantPublicData(getRestaurantByNameUseCase.execute(name));
     }
 
 }

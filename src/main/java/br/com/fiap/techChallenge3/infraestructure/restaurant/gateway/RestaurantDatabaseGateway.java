@@ -3,7 +3,6 @@ package br.com.fiap.techChallenge3.infraestructure.restaurant.gateway;
 import br.com.fiap.techChallenge3.entity.restaurant.gateway.RestaurantGateway;
 import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
 import br.com.fiap.techChallenge3.infraestructure.config.db.repository.RestaurantRepository;
-import br.com.fiap.techChallenge3.infraestructure.config.db.schema.CustomerSchema;
 import br.com.fiap.techChallenge3.infraestructure.config.db.schema.RestaurantSchema;
 
 import java.util.List;
@@ -33,18 +32,18 @@ public class RestaurantDatabaseGateway implements RestaurantGateway {
     }
 
     @Override
-    public Optional<Restaurant> findByName(String restaurant) {
-        return Optional.empty();
+    public Optional<Restaurant> findByName(String name) {
+        return restaurantRepository.findByName(name);
     }
 
     @Override
-    public List<Restaurant> findByCuisine(String restaurant) {
-        return null;
+    public List<Restaurant> findByCuisine(String cuisine) {
+        return restaurantRepository.findByCuisine(cuisine);
     }
 
     @Override
-    public List<Restaurant> findByLocation(String restaurant) {
-        return null;
+    public List<Restaurant> findByLocation(String location) {
+        return restaurantRepository.findByLocation(location);
     }
 
     @Override

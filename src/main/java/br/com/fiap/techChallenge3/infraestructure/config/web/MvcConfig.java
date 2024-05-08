@@ -12,26 +12,10 @@ import br.com.fiap.techChallenge3.infraestructure.customer.gateway.CustomerDatab
 import br.com.fiap.techChallenge3.infraestructure.reservation.gateway.ReservationDatabaseGateway;
 import br.com.fiap.techChallenge3.infraestructure.restaurant.gateway.RestaurantDatabaseGateway;
 import br.com.fiap.techChallenge3.infraestructure.review.gateway.ReviewDatabaseGateway;
-import br.com.fiap.techChallenge3.usecase.customer.CreateCustomerUseCase;
-import br.com.fiap.techChallenge3.usecase.customer.DeleteCustomerUseCase;
-import br.com.fiap.techChallenge3.usecase.customer.GetCustomerUseCase;
-import br.com.fiap.techChallenge3.usecase.customer.SearchCustomerUseCase;
-import br.com.fiap.techChallenge3.usecase.customer.UpdateCustomerUseCase;
-import br.com.fiap.techChallenge3.usecase.reservation.CreateReservationUseCase;
-import br.com.fiap.techChallenge3.usecase.reservation.DeleteReservationUseCase;
-import br.com.fiap.techChallenge3.usecase.reservation.GetReservationUseCase;
-import br.com.fiap.techChallenge3.usecase.reservation.SearchReservationUseCase;
-import br.com.fiap.techChallenge3.usecase.reservation.UpdateReservationUseCase;
-import br.com.fiap.techChallenge3.usecase.restaurant.CreateRestaurantUseCase;
-import br.com.fiap.techChallenge3.usecase.restaurant.DeleteRestaurantUseCase;
-import br.com.fiap.techChallenge3.usecase.restaurant.GetRestaurantUseCase;
-import br.com.fiap.techChallenge3.usecase.restaurant.SearchRestaurantUseCase;
-import br.com.fiap.techChallenge3.usecase.restaurant.UpdateRestaurantUseCase;
-import br.com.fiap.techChallenge3.usecase.review.CreateReviewUseCase;
-import br.com.fiap.techChallenge3.usecase.review.DeleteReviewUseCase;
-import br.com.fiap.techChallenge3.usecase.review.GetReviewUseCase;
-import br.com.fiap.techChallenge3.usecase.review.SearchReviewUseCase;
-import br.com.fiap.techChallenge3.usecase.review.UpdateReviewUseCase;
+import br.com.fiap.techChallenge3.usecase.customer.*;
+import br.com.fiap.techChallenge3.usecase.reservation.*;
+import br.com.fiap.techChallenge3.usecase.restaurant.*;
+import br.com.fiap.techChallenge3.usecase.review.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -54,6 +38,24 @@ public class MvcConfig {
     public GetRestaurantUseCase getRestaurantUseCase(RestaurantRepository restaurantRepository) {
         RestaurantGateway restaurantGateway = new RestaurantDatabaseGateway(restaurantRepository);
         return new GetRestaurantUseCase(restaurantGateway);
+    }
+
+    @Bean
+    public GetRestaurantByNameUseCase getRestaurantByNameUseCase(RestaurantRepository restaurantRepository) {
+        RestaurantGateway restaurantGateway = new RestaurantDatabaseGateway(restaurantRepository);
+        return new GetRestaurantByNameUseCase(restaurantGateway);
+    }
+
+    @Bean
+    public GetRestaurantByLocationUseCase getRestaurantByLocationUseCase(RestaurantRepository restaurantRepository) {
+        RestaurantGateway restaurantGateway = new RestaurantDatabaseGateway(restaurantRepository);
+        return new GetRestaurantByLocationUseCase(restaurantGateway);
+    }
+
+    @Bean
+    public GetRestaurantByCuisineUseCase getRestaurantByCuisineUseCase(RestaurantRepository restaurantRepository) {
+        RestaurantGateway restaurantGateway = new RestaurantDatabaseGateway(restaurantRepository);
+        return new GetRestaurantByCuisineUseCase(restaurantGateway);
     }
 
     @Bean
