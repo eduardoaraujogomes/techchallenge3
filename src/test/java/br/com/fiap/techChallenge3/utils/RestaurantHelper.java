@@ -1,5 +1,6 @@
 package br.com.fiap.techChallenge3.utils;
 
+import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
 import com.github.javafaker.Faker;
 
 import java.util.Locale;

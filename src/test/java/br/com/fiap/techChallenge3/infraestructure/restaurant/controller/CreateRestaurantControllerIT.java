@@ -49,6 +49,6 @@ public class CreateRestaurantControllerIT {
                 .post()
                 .then()
                 .statusCode( HttpStatus.CREATED.value())
-                .body(matchesJsonSchemaInClasspath("restaurant-schema.json"));
+                .body(matchesJsonSchemaInClasspath( "schema/restaurant-schema.json" ));
     }
 }

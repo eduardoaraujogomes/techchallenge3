@@ -21,7 +21,7 @@ public class CreateCustomerUseCaseTest {
     }
 
     @Test
-    public void testExecute() {
+    public void deveCriarCustomerComSucessoTest() {
 
         ICustomerRegistrationData request = mock(ICustomerRegistrationData.class);
         when(request.username()).thenReturn("augusto.junior");
