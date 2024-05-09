@@ -1,4 +1,4 @@
-package br.com.fiap.techChallenge3.controller;
+package br.com.fiap.techChallenge3.infraestructure.restaurant.controller;
 
 import br.com.fiap.techChallenge3.utils.Config;
 import br.com.fiap.techChallenge3.utils.RestaurantHelper;
@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.*;
 
-public class RestaurantControllerT {
+public class CreateRestaurantControllerIT {
     private static final String BASE_URL = Config.getLocalhostUrl();
     private static final int PORT = Config.getLocalhostPort();
     private static final String BASE_PATH = "/restaurants";
