@@ -39,27 +39,27 @@ public class CreateReviewUseCaseTest {
     @Test
     public void deveCriarRestaurantComSucessoTest() {
 
-        IReviewRegistrationData registrationData = mock(IReviewRegistrationData.class);
         Restaurant restaurant = new Restaurant(
                 "The Best Of Recife", "Recife", "Brasileira", LocalTime.parse("19:00", DateTimeFormatter.ofPattern("HH:mm")), 50);
         when(restaurantGateway.findById(any())).thenReturn(Optional.of(restaurant));
-        when(registrationData.restaurantId()).thenReturn(restaurant.getId());
         Customer customer = new Customer(
                 "augusto.junior", "augusto@junior.com", "123password", "augusto@junior.com", "46339814042", "1132659848");
         when(customerGateway.findById(any())).thenReturn(Optional.of(customer));
-        when(registrationData.userId()).thenReturn(customer.getId());
+        IReviewRegistrationData registrationData = mock(IReviewRegistrationData.class);
+        when(registrationData.restaurantId()).thenReturn(1L);
+        when(registrationData.userId()).thenReturn(2L);
         when(registrationData.rating()).thenReturn(10.0);
-        when(registrationData.comment()).thenReturn("Comentário");
-        Review review = new Review(restaurant, customer, registrationData.rating(), registrationData.comment());
-        when(reviewGateway.findById(any())).thenReturn(Optional.of(review));
+        when(registrationData.comment()).thenReturn("comentario");
+        Review review = new Review(restaurant, customer, 10.00, "comentario");
+        when(reviewGateway.create(any())).thenReturn(review);
 
         Review result = createReviewUseCase.execute(registrationData);
 
-        assertEquals(result.getRestaurant().getId(), restaurant.getId());
-        assertEquals(result.getCustomer().getId(), customer.getId());
-        assertEquals(result.getRating(), registrationData.rating());
-        assertEquals(result.getComment(), registrationData.comment());
-        verify(reviewGateway, times(1)).findById(any());
+        assertEquals(result.getRestaurant(), restaurant);
+        assertEquals(result.getCustomer(), customer);
+        assertEquals(result.getRating(), 10.0);
+        assertEquals(result.getComment(), "comentario");
+        verify(reviewGateway, times(1)).create(any(Review.class));
 
     }
 
