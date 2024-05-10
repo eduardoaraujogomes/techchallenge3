@@ -8,7 +8,7 @@ import br.com.fiap.techChallenge3.entity.restaurant.gateway.RestaurantGateway;
 import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
 import br.com.fiap.techChallenge3.entity.review.gateway.ReviewGateway;
 import br.com.fiap.techChallenge3.entity.review.model.Review;
-import br.com.fiap.techChallenge3.usecase.review.dto.IReviewtRegistrationData;
+import br.com.fiap.techChallenge3.usecase.review.dto.IReviewRegistrationData;
 
 public class CreateReviewUseCase {
 
@@ -23,7 +23,7 @@ public class CreateReviewUseCase {
         this.customerGateway = customerGateway;
     }
 
-    public Review execute(IReviewtRegistrationData registrationData) throws RestaurantNotFoundException, CustomerNotFoundException{
+    public Review execute(IReviewRegistrationData registrationData) throws RestaurantNotFoundException, CustomerNotFoundException {
         Restaurant restaurant = restaurantGateway.findById(registrationData.restaurantId()).orElseThrow(RestaurantNotFoundException::new);
         Customer customer = customerGateway.findById(registrationData.userId()).orElseThrow(CustomerNotFoundException::new);
         Review review = new Review(restaurant, customer, registrationData.rating(), registrationData.comment());
