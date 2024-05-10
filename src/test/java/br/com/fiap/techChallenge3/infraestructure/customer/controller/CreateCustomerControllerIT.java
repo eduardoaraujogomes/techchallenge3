@@ -1,5 +1,6 @@
 package br.com.fiap.techChallenge3.infraestructure.customer.controller;
 
+import br.com.fiap.techChallenge3.entity.customer.model.Customer;
 import br.com.fiap.techChallenge3.infraestructure.restaurant.controller.CreateRestaurantControllerIT;
 import br.com.fiap.techChallenge3.utils.Config;
 import br.com.fiap.techChallenge3.utils.CustomerHelper;
@@ -25,7 +26,8 @@ public class CreateCustomerControllerIT {
     @BeforeAll
     public void setup(){
 
-        createRestaurantControllerIT.deveCriarRestaurantComSucesso();
+        //createRestaurantControllerIT.deveCriarRestaurantComSucesso();
+
     }
     @Test
     public void deveCriarCustomerComSucesso(){
@@ -35,7 +37,7 @@ public class CreateCustomerControllerIT {
                 .port(PORT)
                 .basePath(BASE_PATH)
                 .contentType( MediaType.APPLICATION_JSON_VALUE)
-                .body(customerHelper.bodyRequestCustomer())
+                .body(generatorCustomer())
                 .when()
                 .post()
                 .then()
@@ -61,5 +63,17 @@ public class CreateCustomerControllerIT {
                 .then()
                 .statusCode( HttpStatus.CREATED.value())
                 .body(matchesJsonSchemaInClasspath( "schema/customer-schema.json" ));
+    }
+
+    private Customer generatorCustomer(){
+
+        Customer customer =  new Customer();
+        customer.setUsername( "Pedro");
+        customer.setPassword( "123456");
+        customer.setName( "Alan");
+        customer.setEmail( "teste@teste.com");
+        customer.setCpf( "35598678421");
+        customer.setPhoneNumber( "3196358472" );
+        return customer;
     }
 }

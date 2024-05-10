@@ -15,8 +15,8 @@ public class CreateCustomerUseCase {
 
     public Customer execute(ICustomerRegistrationData request) {
 
-        Customer customer = new Customer(request.username(), request.password(), request.name(),
-                request.email(), request.cpf(), request.phoneNumber());
+        Customer customer = new Customer(request.username(), request.email(), request.password(), request.name(),
+                 request.cpf(), request.phoneNumber());
 
         return this.customerGateway.create(customer);
     }

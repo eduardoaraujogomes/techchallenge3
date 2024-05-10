@@ -35,4 +35,7 @@ public class Customer extends User {
         this.reviews = reviews;
     }
 
+    public Customer(){
+        super();
+    }
 }
