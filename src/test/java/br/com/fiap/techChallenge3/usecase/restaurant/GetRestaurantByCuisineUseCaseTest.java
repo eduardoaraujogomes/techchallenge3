@@ -31,7 +31,7 @@ class GetRestaurantByCuisineUseCaseTest {
     }
 
     @Test
-    void deveConsultarRestaurantByCuisineComSucesso() throws RestaurantNotFoundException {
+    void getRestaurantByCuisineSucessTest() throws RestaurantNotFoundException {
 
         String cuisine = "Brasileira";
         Restaurant restaurant1 = new Restaurant("The Best Of Recife", "Recife", cuisine,
