@@ -4,6 +4,7 @@ import br.com.fiap.techChallenge3.entity.review.exception.ReviewNotFoundExceptio
 import br.com.fiap.techChallenge3.entity.review.gateway.ReviewGateway;
 import br.com.fiap.techChallenge3.entity.review.model.Review;
 import br.com.fiap.techChallenge3.infraestructure.review.dto.ReviewUpdateData;
+
 import java.util.function.Consumer;
 
 public class UpdateReviewUseCase {
@@ -15,12 +16,15 @@ public class UpdateReviewUseCase {
     }
 
     public Review execute(Long id, ReviewUpdateData updateData) throws ReviewNotFoundException {
+
         Review review = reviewGateway.findById(id).orElseThrow(ReviewNotFoundException::new);
 
         updateReviewIfNotBlank(updateData.rating(), review::setRating);
         updateReviewIfNotBlank(updateData.comment(), review::setComment);
 
-        return reviewGateway.update(review);
+        reviewGateway.update(review);
+
+        return review;
     }
 
     private <T> void updateReviewIfNotBlank(T value, Consumer<T> setter) {
