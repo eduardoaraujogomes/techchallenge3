@@ -22,7 +22,7 @@ public class GetReviewController {
 
     @GetMapping("/review/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ReviewPublicData deleteReview(@PathVariable Long id) throws ReviewNotFoundException {
+    public ReviewPublicData getReview(@PathVariable Long id) throws ReviewNotFoundException {
         return new ReviewPublicData(getReviewUseCase.execute(id));
     }
 

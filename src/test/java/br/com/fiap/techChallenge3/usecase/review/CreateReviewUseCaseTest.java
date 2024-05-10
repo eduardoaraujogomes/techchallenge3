@@ -39,7 +39,7 @@ public class CreateReviewUseCaseTest {
     }
 
     @Test
-    public void deveCriarRestaurantComSucessoTest() {
+    public void deveCriarReviewComSucessoTest() {
 
         Restaurant restaurant = new Restaurant(
                 "The Best Of Recife", "Recife", "Brasileira", LocalTime.parse("19:00", DateTimeFormatter.ofPattern("HH:mm")), 50);
@@ -66,7 +66,7 @@ public class CreateReviewUseCaseTest {
     }
 
     @Test
-    public void deveCriarRestaurantSemSucessoTest() {
+    public void deveCriarReviewSemSucessoTest() {
 
         Restaurant restaurant = new Restaurant(
                 "The Best Of Recife", "Recife", "Brasileira", LocalTime.parse("19:00", DateTimeFormatter.ofPattern("HH:mm")), 50);
