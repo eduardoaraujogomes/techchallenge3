@@ -30,7 +30,7 @@ class GetRestaurantByLocationUseCaseTest {
     }
 
     @Test
-    void deveConsultarRestaurantByLocationComSucesso() throws RestaurantNotFoundException {
+    void getRestaurantByLocationSucessTest() throws RestaurantNotFoundException {
 
         String location = "São Paulo";
         Restaurant restaurant1 = new Restaurant("The Best Of Recife", "Recife", "Brasileira",

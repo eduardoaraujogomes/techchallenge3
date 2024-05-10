@@ -23,7 +23,7 @@ public class CreateRestaurantUseCaseTest {
     }
 
     @Test
-    public void deveCriarRestaurantComSucessoTest() {
+    public void createRestaurantSucessTest() {
 
         IRestaurantRegistrationData registrationData = mock(IRestaurantRegistrationData.class);
         when(registrationData.name()).thenReturn("The Best Of Recife");
