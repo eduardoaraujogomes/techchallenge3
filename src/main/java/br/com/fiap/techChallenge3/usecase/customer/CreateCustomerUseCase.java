@@ -14,6 +14,9 @@ public class CreateCustomerUseCase {
     }
 
     public Customer execute(ICustomerRegistrationData request) {
+        if (request == null) {
+            throw new IllegalArgumentException("Request is not valid");
+        }
 
         Customer customer = new Customer(request.username(), request.email(), request.password(), request.name(),
                  request.cpf(), request.phoneNumber());
