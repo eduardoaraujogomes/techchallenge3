@@ -15,8 +15,8 @@ public record ReservationRegistrationData(
         @NotNull
         String date,
 
-//        @NotNull
-//        Long restaurantId,
+        @NotNull
+        Long restaurantId,
 
         @NotNull
         Long customerId

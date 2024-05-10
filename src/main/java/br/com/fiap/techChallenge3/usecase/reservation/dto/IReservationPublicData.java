@@ -1,12 +1,10 @@
 package br.com.fiap.techChallenge3.usecase.reservation.dto;
 
 import br.com.fiap.techChallenge3.usecase.customer.dto.ICustomerPublicData;
-
+import br.com.fiap.techChallenge3.usecase.restaurant.dto.IRestaurantPublicData;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-// DTO (Data Transfer Object) interface to invert spring boot lib dependencies,
-// respecting the decoupling of the use cases layer
 public interface IReservationPublicData {
 
     Long id();
@@ -15,7 +13,7 @@ public interface IReservationPublicData {
 
     LocalDate date();
 
-//    IRestaurantPublicData restaurant();
+    IRestaurantPublicData restaurant();
 
     ICustomerPublicData customer();
 

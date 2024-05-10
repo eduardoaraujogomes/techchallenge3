@@ -19,7 +19,7 @@ public class CreateReservationController {
         this.reservationUseCase = reservationUseCase;
     }
 
-    @PostMapping("/reservation")
+    @PostMapping("/reservations")
     @ResponseStatus(HttpStatus.CREATED)
     public ReservationPublicData createReservation(@Valid @RequestBody ReservationRegistrationData request) {
         return new ReservationPublicData(reservationUseCase.execute(request));

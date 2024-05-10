@@ -6,7 +6,9 @@ public interface IReservationRegistrationData {
 
     String date();
 
-//    Long rentalCompanyId();
+    Long restaurantId();
 
     Long customerId();
+
+
 }
