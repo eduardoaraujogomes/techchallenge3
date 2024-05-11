@@ -25,31 +25,33 @@ public class UpdateCustomerUseCaseTest {
     }
 
     @Test
-    public void testExecuteUpdatesCustomerWhenIdIsValid() throws CustomerNotFoundException {
+    public void shouldUpdatesCustomerWhenIdIsValid() throws CustomerNotFoundException {
         Long customerId = 1L;
         ICustomerUpdateData updateData = mock(ICustomerUpdateData.class);
-        Customer existingCustomer = new Customer("danizin", "1234", "Daniel Martins", "daniel@example.com", "54878912354", "56619973");
-        when(customerGateway.findById(customerId)).thenReturn(Optional.of(existingCustomer));
-        when(updateData.username()).thenReturn("danizin");
-        when(updateData.password()).thenReturn("1234");
-        when(updateData.name()).thenReturn("Daniel Martins");
-        when(updateData.email()).thenReturn("daniel@example.com");
-        when(updateData.cpf()).thenReturn("54878912354");
-        when(updateData.phoneNumber()).thenReturn("56619973");
+        Customer customer = new Customer("danizin", "daniel@example.com", "1234", "Daniel Martins", "54878912354", "56619973");
+        when(customerGateway.findById(customerId)).thenReturn(Optional.of(customer));
+        when(updateData.username()).thenReturn("eduardo");
+        when(updateData.password()).thenReturn("7894");
+        when(updateData.name()).thenReturn("Eduardo Araujo");
+        when(updateData.email()).thenReturn("eduardo@example.com");
+        when(updateData.cpf()).thenReturn("54878912356");
+        when(updateData.phoneNumber()).thenReturn("56619974");
+
+        when(customerGateway.update(customer)).thenReturn(customer);
 
         Customer updatedCustomer = updateCustomerUseCase.execute(customerId, updateData);
 
-        assertEquals("danizin", updatedCustomer.getUsername());
-        assertEquals("1234", updatedCustomer.getPassword());
-        assertEquals("Daniel Martins", updatedCustomer.getName());
-        assertEquals("daniel@example.com", updatedCustomer.getEmail());
-        assertEquals("54878912354", updatedCustomer.getCpf());
-        assertEquals("56619973", updatedCustomer.getPhoneNumber());
-        verify(customerGateway, times(1)).update(existingCustomer);
+        assertEquals("eduardo", updatedCustomer.getUsername());
+        assertEquals("7894", updatedCustomer.getPassword());
+        assertEquals("Eduardo Araujo", updatedCustomer.getName());
+        assertEquals("eduardo@example.com", updatedCustomer.getEmail());
+        assertEquals("54878912356", updatedCustomer.getCpf());
+        assertEquals("56619974", updatedCustomer.getPhoneNumber());
+        verify(customerGateway, times(1)).update(customer);
     }
 
     @Test
-    public void testExecuteThrowsExceptionWhenCustomerNotFound() {
+    public void shouldThrowsExceptionWhenCustomerNotFound() {
         Long customerId = 1L;
         ICustomerUpdateData updateData = mock(ICustomerUpdateData.class);
         when(customerGateway.findById(customerId)).thenReturn(Optional.empty());
