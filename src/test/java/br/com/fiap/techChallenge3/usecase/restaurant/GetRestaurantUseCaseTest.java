@@ -30,7 +30,7 @@ class GetRestaurantUseCaseTest {
     }
 
     @Test
-    void getRestaurantByIdSuccessTest() throws RestaurantNotFoundException {
+    void shouldGetRestaurantByIdSuccessTest() throws RestaurantNotFoundException {
 
         long restaurantId = 1L;
         Restaurant expectedRestaurant = new Restaurant("The Best Of Recife", "Recife", "Brasileira",
@@ -45,7 +45,7 @@ class GetRestaurantUseCaseTest {
     }
 
     @Test
-    void getRestaurantByIdNotFoundTest() {
+    void shouldGetRestaurantByIdNotFoundTest() {
 
         long nonExistingRestaurantId = 2L;
 

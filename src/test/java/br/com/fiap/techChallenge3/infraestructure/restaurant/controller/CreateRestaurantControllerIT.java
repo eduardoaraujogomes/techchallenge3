@@ -16,7 +16,7 @@ public class CreateRestaurantControllerIT {
     private static final String BASE_PATH = "/restaurants";
     RestaurantHelper restaurantHelper = new RestaurantHelper();
     @Test
-    public void deveCriarRestaurantComSucesso(){
+    public void shouldCreateRestaurantSucess(){
 
         given()
                 .baseUri(BASE_URL)
@@ -30,14 +30,14 @@ public class CreateRestaurantControllerIT {
                 .statusCode( HttpStatus.CREATED.value())
                 .body("id", not(empty()))
                 .body("name", not(empty()))
-                .body("location", not(empty()))
-                .body("cuisineType", not(empty()))
-                .body("openingHours", not(empty()))
-                .body("capacity", not(empty()));
+                .body("location", equalTo("Industrial"))
+                .body("cuisineType", equalTo("Brasileira"))
+                .body("openingHours", equalTo("20:00:00"))
+                .body("capacity", equalTo(Integer.parseInt("150")));
     }
 
     @Test
-    public void deveValidarSchemaResponseRestaurant(){
+    public void shouldValidateSchemaResponseRestaurant(){
 
         given()
                 .baseUri(BASE_URL)

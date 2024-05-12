@@ -1,7 +1,9 @@
 package br.com.fiap.techChallenge3.infraestructure.restaurant.controller;
 
+import br.com.fiap.techChallenge3.entity.customer.exception.CustomerNotFoundException;
 import br.com.fiap.techChallenge3.entity.restaurant.exception.RestaurantNotFoundException;
 import br.com.fiap.techChallenge3.infraestructure.restaurant.dto.RestaurantPublicData;
+import br.com.fiap.techChallenge3.usecase.customer.DeleteCustomerUseCase;
 import br.com.fiap.techChallenge3.usecase.restaurant.DeleteRestaurantUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,7 +21,7 @@ public class DeleteRestaurantController {
 
     @DeleteMapping("/restaurants/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public RestaurantPublicData deleteRestaurant(@PathVariable Long id) throws RestaurantNotFoundException {
-        return new RestaurantPublicData(deleteRestaurantUseCase.execute(id));
+    public void restaurants(@PathVariable Long id) throws RestaurantNotFoundException {
+        deleteRestaurantUseCase.execute(id);
     }
 }

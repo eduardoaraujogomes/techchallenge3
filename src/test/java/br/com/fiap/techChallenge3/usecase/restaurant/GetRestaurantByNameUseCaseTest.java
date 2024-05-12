@@ -30,7 +30,7 @@ class GetRestaurantByNameUseCaseTest {
     }
 
     @Test
-    void getRestaurantByNameSuccessTest() throws RestaurantNotFoundException {
+    void shouldGetRestaurantByNameSuccessTest() throws RestaurantNotFoundException {
 
         String restaurantName = "The Best Of Recife";
         Restaurant expectedRestaurant = new Restaurant(restaurantName, "Recife", "Brasileira",
@@ -45,7 +45,7 @@ class GetRestaurantByNameUseCaseTest {
     }
 
     @Test
-    void getRestaurantByNameNotFoundTest() {
+    void shouldGetRestaurantByNameNotFoundTest() {
 
         String nonExistingRestaurantName = "The Best Of Recife not Inexistent";
 

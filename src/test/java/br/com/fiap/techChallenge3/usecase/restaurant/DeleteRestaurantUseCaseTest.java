@@ -30,7 +30,7 @@ class DeleteRestaurantUseCaseTest {
 
 
     @Test
-    void deleteRestaurantSucessTest() throws RestaurantNotFoundException {
+    void shouldDeleteRestaurantSucessTest() throws RestaurantNotFoundException {
 
         long restaurantId = 1L;
         Restaurant restaurant = new Restaurant("The Best Of Recife", "Recife", "Brasileira",
@@ -47,7 +47,7 @@ class DeleteRestaurantUseCaseTest {
 
 
     @Test
-    void exceptionRestaurantNotFoundTest() {
+    void shouldExceptionRestaurantNotFoundTest() {
 
         long nonExistingRestaurantId = 2L;
 

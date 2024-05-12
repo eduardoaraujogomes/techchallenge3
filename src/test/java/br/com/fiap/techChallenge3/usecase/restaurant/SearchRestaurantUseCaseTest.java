@@ -9,9 +9,11 @@ import org.mockito.MockitoAnnotations;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 class SearchRestaurantUseCaseTest {
@@ -28,7 +30,7 @@ class SearchRestaurantUseCaseTest {
     }
 
     @Test
-    void searchRestaurantSuccessTest() {
+    void shouldSearchRestaurantSuccessTest() {
 
         List<Restaurant> expectedRestaurants = Arrays.asList(
                 new Restaurant("The Best Of Recife", "Recife", "Brasileira",
@@ -44,4 +46,17 @@ class SearchRestaurantUseCaseTest {
         assertEquals(expectedRestaurants, actualRestaurants);
         verify(restaurantGateway, times(1)).findAll();
     }
+    @Test
+    void shouldSearchRestaurantNotFoundTest() {
+
+        List<Restaurant> expectedRestaurants = Collections.emptyList();
+
+        when(restaurantGateway.findAll()).thenReturn(expectedRestaurants);
+
+        List<Restaurant> actualRestaurants = searchRestaurantUseCase.execute();
+
+        assertTrue(actualRestaurants.isEmpty());
+        verify(restaurantGateway, times(1)).findAll();
+    }
+
 }

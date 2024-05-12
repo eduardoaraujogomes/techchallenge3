@@ -35,4 +35,8 @@ public class Restaurant extends AbstractEntity<Long> {
         this.capacity = capacity;
     }
 
+    public Restaurant(){
+        super();
+    }
+
 }

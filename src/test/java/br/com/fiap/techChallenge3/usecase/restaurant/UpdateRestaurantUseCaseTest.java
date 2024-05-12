@@ -31,7 +31,7 @@ class UpdateRestaurantUseCaseTest {
     }
 
     @Test
-    void updateRestaurantSuccessTest() throws RestaurantNotFoundException {
+    void shouldUpateRestaurantSuccessTest() throws RestaurantNotFoundException {
         long restaurantId = 1L;
         RestaurantUpdateData updateData = new RestaurantUpdateData(
                 "The Best Of Recife", "Recife", "Brasileira",
@@ -60,7 +60,7 @@ class UpdateRestaurantUseCaseTest {
     }
 
     @Test
-    void updateRestaurantNotFoundTest() {
+    void shouldUpdateRestaurantNotFoundTest() {
 
         long nonExistingRestaurantId = 2L;
         RestaurantUpdateData updateData = new RestaurantUpdateData("New Name", "New Location", "New Cuisine",

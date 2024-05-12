@@ -1,5 +1,7 @@
 package br.com.fiap.techChallenge3.usecase.restaurant;
 
+import br.com.fiap.techChallenge3.entity.customer.exception.CustomerNotFoundException;
+import br.com.fiap.techChallenge3.entity.customer.model.Customer;
 import br.com.fiap.techChallenge3.entity.restaurant.exception.RestaurantNotFoundException;
 import br.com.fiap.techChallenge3.entity.restaurant.gateway.RestaurantGateway;
 import br.com.fiap.techChallenge3.entity.restaurant.model.Restaurant;
@@ -11,9 +13,10 @@ public class DeleteRestaurantUseCase {
         this.restaurantGateway = restaurantGateway;
     }
 
-    public Restaurant execute(Long id) throws RestaurantNotFoundException {
-        Restaurant restaurant = restaurantGateway.findById(id).orElseThrow(RestaurantNotFoundException::new);
-        restaurantGateway.delete(id);
-        return restaurant;
+    public void  execute(final Long id) {
+        Restaurant restaurant = restaurantGateway.findById(id)
+                .orElseThrow(CustomerNotFoundException::new);
+
+        restaurantGateway.delete(restaurant.getId());
     }
 }

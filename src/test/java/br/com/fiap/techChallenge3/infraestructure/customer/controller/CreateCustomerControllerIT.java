@@ -49,7 +49,7 @@ public class CreateCustomerControllerIT {
                 .body("phoneNumber", not(empty()));
     }
 
-    //@Test
+    @Test
     public void deveValidarSchemaResponseCustomer(){
 
         given()
