@@ -21,7 +21,6 @@ public class CreateReviewControllerIT {
     private static final int PORT = Config.getLocalhostPort();
     private static final String BASE_PATH = "/reviews";
     ReviewHelper reviewHelper = new ReviewHelper();
-    CreateRestaurantControllerIT createRestaurantControllerIT = new CreateRestaurantControllerIT();
     CreateCustomerControllerIT createCustomerControllerIT = new CreateCustomerControllerIT();
 
     @BeforeAll
