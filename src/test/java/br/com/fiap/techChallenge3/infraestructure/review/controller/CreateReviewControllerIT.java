@@ -26,12 +26,11 @@ public class CreateReviewControllerIT {
 
     @BeforeAll
     public void setup(){
-        createRestaurantControllerIT.deveCriarRestaurantComSucesso();
         createCustomerControllerIT.deveCriarCustomerComSucesso();
     }
 
     @Test
-    public void deveCriarReviewComSucesso(){
+    public void shouldCreateReviewSucess(){
 
         given()
                 .baseUri(BASE_URL)
@@ -63,7 +62,7 @@ public class CreateReviewControllerIT {
     }
 
     @Test
-    public void deveValidarSchemaResponseRestaurant(){
+    public void shouldValidateSchemaResponseReview(){
 
         given()
                 .baseUri(BASE_URL)

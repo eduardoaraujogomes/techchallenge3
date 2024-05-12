@@ -11,9 +11,11 @@ import org.mockito.MockitoAnnotations;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 class GetRestaurantByLocationUseCaseTest {
@@ -30,7 +32,7 @@ class GetRestaurantByLocationUseCaseTest {
     }
 
     @Test
-    void getRestaurantByLocationSucessTest() throws RestaurantNotFoundException {
+    void shouldGetRestaurantByLocationSucessTest() throws RestaurantNotFoundException {
 
         String location = "São Paulo";
         Restaurant restaurant1 = new Restaurant("The Best Of Recife", "Recife", "Brasileira",
@@ -46,4 +48,19 @@ class GetRestaurantByLocationUseCaseTest {
         assertEquals(expectedRestaurants, actualRestaurants);
         verify(restaurantGateway, times(1)).findByLocation(location);
     }
+
+    @Test
+    void shouldGetRestaurantByLocationNotFoundTest() throws RestaurantNotFoundException {
+
+        String location = "Rio de Janeiro";
+        List<Restaurant> expectedRestaurants = Collections.emptyList();
+
+        when(restaurantGateway.findByLocation(location)).thenReturn(expectedRestaurants);
+
+        List<Restaurant> actualRestaurants = getRestaurantByLocationUseCase.execute(location);
+
+        assertTrue(actualRestaurants.isEmpty());
+        verify(restaurantGateway, times(1)).findByLocation(location);
+    }
+
 }
