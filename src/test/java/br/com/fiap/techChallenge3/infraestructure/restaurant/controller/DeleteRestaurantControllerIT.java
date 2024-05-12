@@ -40,5 +40,4 @@ public class DeleteRestaurantControllerIT {
 
         assertThat(responseBody, emptyString());
     }
-
 }

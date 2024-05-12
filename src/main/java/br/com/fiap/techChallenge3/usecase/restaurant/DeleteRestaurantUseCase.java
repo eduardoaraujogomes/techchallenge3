@@ -15,7 +15,7 @@ public class DeleteRestaurantUseCase {
 
     public void  execute(final Long id) {
         Restaurant restaurant = restaurantGateway.findById(id)
-                .orElseThrow(CustomerNotFoundException::new);
+                .orElseThrow(RestaurantNotFoundException::new);
 
         restaurantGateway.delete(restaurant.getId());
     }
