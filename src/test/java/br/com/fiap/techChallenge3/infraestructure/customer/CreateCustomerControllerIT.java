@@ -1,7 +1,7 @@
-package br.com.fiap.techChallenge3.infraestructure.customer.controller;
+package br.com.fiap.techChallenge3.infraestructure.customer;
 
 import br.com.fiap.techChallenge3.entity.customer.model.Customer;
-import br.com.fiap.techChallenge3.infraestructure.restaurant.controller.CreateRestaurantControllerIT;
+import br.com.fiap.techChallenge3.infraestructure.restaurant.CreateRestaurantControllerIT;
 import br.com.fiap.techChallenge3.utils.Config;
 import br.com.fiap.techChallenge3.utils.CustomerHelper;
 import org.junit.jupiter.api.BeforeAll;
