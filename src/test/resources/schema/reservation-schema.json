@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "restaurant": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "location": { "type": "string" },
+        "cuisine": { "type": "string" }
+      },
+      "required": ["id", "name", "location", "cuisine"]
+    },
+    "customer": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "hour": { "type": "string", "format": "time" },
+    "date": { "type": "string" },
+    "status": { "type": "string", "enum": ["CONFIRMED", "CANCELLED"] }
+  },
+  "required": ["restaurant", "customer", "hour", "date", "status"]
+}

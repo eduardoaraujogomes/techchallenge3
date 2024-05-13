@@ -1,10 +1,8 @@
 package br.com.fiap.techChallenge3.infraestructure.customer.controller;
 
 import br.com.fiap.techChallenge3.entity.customer.model.Customer;
-import br.com.fiap.techChallenge3.infraestructure.restaurant.controller.CreateRestaurantControllerIT;
 import br.com.fiap.techChallenge3.utils.Config;
 import br.com.fiap.techChallenge3.utils.CustomerHelper;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.http.HttpStatus;
@@ -22,15 +20,9 @@ public class CreateCustomerControllerIT {
     private static final int PORT = Config.getLocalhostPort();
     private static final String BASE_PATH = "/customers";
     CustomerHelper customerHelper = new CustomerHelper();
-    CreateRestaurantControllerIT createRestaurantControllerIT = new CreateRestaurantControllerIT();
-    @BeforeAll
-    public void setup(){
 
-        //createRestaurantControllerIT.deveCriarRestaurantComSucesso();
-
-    }
     @Test
-    public void deveCriarCustomerComSucesso(){
+    public void shouldCreateCustomerSucess(){
 
         given()
                 .baseUri(BASE_URL)
