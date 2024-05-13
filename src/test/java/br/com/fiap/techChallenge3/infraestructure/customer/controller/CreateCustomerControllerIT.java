@@ -62,7 +62,7 @@ public class CreateCustomerControllerIT {
         Customer customer =  new Customer();
         customer.setUsername( "Pedro");
         customer.setPassword( "123456");
-        customer.setName( "Alan");
+        customer.setName( "Pedro Junior");
         customer.setEmail( "teste@teste.com");
         customer.setCpf( "35598678421");
         customer.setPhoneNumber( "3196358472" );
