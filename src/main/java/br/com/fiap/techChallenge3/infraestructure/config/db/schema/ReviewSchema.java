@@ -11,7 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "review")
+@Table(name = "Review")
 @Data
 @NoArgsConstructor
 public class ReviewSchema extends AbstractEntitySchema<Long> {

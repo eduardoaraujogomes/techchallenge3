@@ -1,4 +1,4 @@
-package br.com.fiap.techChallenge3.infraestructure.restaurant.controller;
+package br.com.fiap.techChallenge3.infraestructure.restaurant;
 
 import br.com.fiap.techChallenge3.utils.Config;
 import br.com.fiap.techChallenge3.utils.RestaurantHelper;

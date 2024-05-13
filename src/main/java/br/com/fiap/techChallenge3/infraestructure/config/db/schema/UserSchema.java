@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "\"User\"")
+@Table(name = "Usuario")
 @Getter
 @Setter
 public abstract class UserSchema extends AbstractEntitySchema<Long> {

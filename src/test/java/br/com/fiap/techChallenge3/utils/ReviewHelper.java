@@ -1,8 +1,6 @@
 package br.com.fiap.techChallenge3.utils;
 
-import com.github.javafaker.Faker;
-
-import java.util.Locale;
+import br.com.fiap.techChallenge3.infraestructure.review.dto.ReviewRegistrationData;
 
 public class ReviewHelper {
 
@@ -17,4 +15,14 @@ public class ReviewHelper {
         String requestBody = "{\"restaurantId\":\"" + restaurantId + "\",\"userId\":\"" + userId + "\",\"rating\":\"" + rating + "\",\"comment\":\"" + comment + "\"}";
         return requestBody;
     }
+
+    public static ReviewRegistrationData gerarReviewRequest() {
+        return ReviewRegistrationData.builder()
+                .restaurantId(1L)
+                .userId(1L)
+                .rating(10.0)
+                .comment("excelente")
+                .build();
+    }
+
 }
