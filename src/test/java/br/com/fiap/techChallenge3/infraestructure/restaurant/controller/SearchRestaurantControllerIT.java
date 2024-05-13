@@ -16,7 +16,6 @@ class SearchRestaurantControllerIT {
     private static final String BASE_URL = Config.getLocalhostUrl();
     private static final int PORT = Config.getLocalhostPort();
     private static final String BASE_PATH = "/restaurants";
-    private static Restaurant mockRestaurant;
 
     @BeforeAll
     public static void setUp() {

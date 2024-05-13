@@ -10,13 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.*;
 
-public class CreateReservationControllerIT {
+class GetReservationControllerIT {
+
     private static final String BASE_URL = Config.getLocalhostUrl();
     private static final int PORT = Config.getLocalhostPort();
-    private static final String BASE_PATH = "/reservations";
+    private static final String BASE_PATH = "/reservations/{id}";
 
     ReservationHelper reservationHelper = new ReservationHelper();
 
@@ -26,10 +26,13 @@ public class CreateReservationControllerIT {
         createRestaurantControllerIT.shouldCreateRestaurantSucess();
         CreateCustomerControllerIT createCustomerControllerIT = new CreateCustomerControllerIT();
         createCustomerControllerIT.shouldCreateCustomerSucess();
+        CreateReservationControllerIT createReservationControllerIT = new CreateReservationControllerIT();
+        createReservationControllerIT.shouldCreateReservationSucess();
     }
 
     @Test
-    public void shouldCreateReservationSucess(){
+    public void shouldGetReservationIdSuccessfully(){
+        int reservationId = 1;
 
         given()
                 .baseUri(BASE_URL)
@@ -37,10 +40,11 @@ public class CreateReservationControllerIT {
                 .basePath(BASE_PATH)
                 .contentType( MediaType.APPLICATION_JSON_VALUE)
                 .body(reservationHelper.bodyRequestReservation())
+                .pathParam("id", reservationId)
                 .when()
-                .post()
+                .get()
                 .then()
-                .statusCode( HttpStatus.CREATED.value())
+                .statusCode( HttpStatus.OK.value())
                 .body("id", not(empty()))
                 .body("hour", equalTo( "22:00" ))
                 .body("date", equalTo("04/12/2024"))
@@ -57,21 +61,5 @@ public class CreateReservationControllerIT {
                 .body("customer.phoneNumber", not(empty()))
                 .body("status", equalTo( "CONFIRMED"));
 
-    }
-
-    //@Test
-    public void shouldValidateSchemaResponseReservation(){
-
-        given()
-                .baseUri(BASE_URL)
-                .port(PORT)
-                .basePath(BASE_PATH)
-                .contentType( MediaType.APPLICATION_JSON_VALUE)
-                .body(reservationHelper.bodyRequestReservation())
-                .when()
-                .post()
-                .then()
-                .statusCode( HttpStatus.CREATED.value())
-                .body(matchesJsonSchemaInClasspath( "schema/reservation-schema.json" ));
     }
 }

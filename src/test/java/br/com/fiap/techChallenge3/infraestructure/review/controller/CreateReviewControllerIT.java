@@ -1,7 +1,6 @@
 package br.com.fiap.techChallenge3.infraestructure.review.controller;
 
 import br.com.fiap.techChallenge3.infraestructure.customer.controller.CreateCustomerControllerIT;
-import br.com.fiap.techChallenge3.infraestructure.restaurant.controller.CreateRestaurantControllerIT;
 import br.com.fiap.techChallenge3.utils.Config;
 import br.com.fiap.techChallenge3.utils.ReviewHelper;
 import org.junit.jupiter.api.BeforeAll;
@@ -25,7 +24,7 @@ public class CreateReviewControllerIT {
 
     @BeforeAll
     public void setup(){
-        createCustomerControllerIT.deveCriarCustomerComSucesso();
+        createCustomerControllerIT.shouldCreateCustomerSucess();
     }
 
     @Test
